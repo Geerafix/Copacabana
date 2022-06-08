@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-
-import Druzyna;
-import Spotkanie;
+import java.util.Random;
 
 public class Polfinal {
     public  Druzyna tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
@@ -74,6 +72,14 @@ public class Polfinal {
         }
 
     }
-    
-    
+
+    void Symuluj (ListaSedziow listaSedziow) {
+
+        Random symulacja = new Random();
+        int zwyciezca, symSedzia;
+        Sedzia sedzia;
+
+        zyciezca = symulacja.nextInt(2);
+        symSedzia = symulacja.nextInt(listaSedziow.size()+1)
+    }
 }
