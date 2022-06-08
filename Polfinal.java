@@ -5,7 +5,7 @@ public class Polfinal {
     public  Druzyna tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
     public  Druzyna tablicaDruzynPolfinaluDwochOgni = new Druzyna [4];
     public  Druzyna tablicaDruzynPolfinaluPrzeciaganiaLiny = new Druzyna [4];
-    public Spotkanie spotkaniaPolfinalu = new ArrayList<Spotkanie>();
+    public TabelaWynikow spotkaniaPolfinalu = new TabelaWynikow ();
 
     Polfinal (ListaDruzyn listaDruzyn)
     {
@@ -78,8 +78,15 @@ public class Polfinal {
         Random symulacja = new Random();
         int zwyciezca, symSedzia;
         Sedzia sedzia;
+        Spotkanie spotkanie;
 
         zyciezca = symulacja.nextInt(2);
-        symSedzia = symulacja.nextInt(listaSedziow.size()+1)
+        symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+        sedzia = listaSedziow.getSedzia(symSedzia);
+
+        spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[0], tablicaDruzynPolfinaluDwochOgni[3], sedzia, dwa_ognie);
+        
+
+        spotkaniaPolfinalu.dodajSpotkanie(spotkanie);
     }
 }
