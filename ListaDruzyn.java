@@ -9,42 +9,45 @@ public class ListaDruzyn
 {
     private ArrayList<Druzyna> lista_druzyn;
     private File plik = new File("listaDruzyn.txt");
-    private Scanner odczyt;
     private FileWriter doPliku;
-     
+    private Scanner odczyt;
+
     public ListaDruzyn()
     {
         lista_druzyn = new ArrayList<>();
     }
 
-    public void dodajDruzyne(Druzyna druzyna) throws IOException
+    public void dodajDruzyne(String druzyna) throws IOException
     {
-        lista_druzyn.add(druzyna);
+        Druzyna dr = new Druzyna(druzyna);
+        lista_druzyn.add(dr);
         doPliku = new FileWriter(plik, true);
-        doPliku.write(druzyna.getDruzyna());
+        doPliku.write(druzyna);
         doPliku.write("\n");
         doPliku.close();
     }
 
     public void usunDruzyne(String nazwa_druzyny) throws IOException
     {
-        for(int i = 0; i < lista_druzyn.size(); i++)
+        Druzyna pomoc = null;
+        for(Druzyna dr1 : lista_druzyn)
         {
-            if(nazwa_druzyny == lista_druzyn.get(i).getDruzyna())
+            if(dr1.getDruzyna().equals(nazwa_druzyny))
             {
-                lista_druzyn.remove(lista_druzyn.get(i));
+                pomoc = dr1;
             }
-            else 
+            else
                 continue;
-        }      
+        }     
+        lista_druzyn.remove(pomoc);
 
         doPliku = new FileWriter(plik, false);
-            
-        for(Druzyna druzyna : lista_druzyn)
-            {
-                doPliku.write(druzyna.getDruzyna());
-                doPliku.write("\n");
-            }
+
+        for(Druzyna dr2 : lista_druzyn)
+        {
+            doPliku.write(dr2.getDruzyna());
+            doPliku.write("\n");
+        }
         doPliku.close();
     }
 
@@ -52,11 +55,10 @@ public class ListaDruzyn
     {
         odczyt = new Scanner(plik);
         String wiersz;
-        Druzyna druzyna;
         while(odczyt.hasNextLine())
             {
                 wiersz = odczyt.nextLine();
-                druzyna = new Druzyna(wiersz);
+                Druzyna druzyna = new Druzyna(wiersz);
                 lista_druzyn.add(druzyna);
             }
     }  
@@ -65,8 +67,13 @@ public class ListaDruzyn
     {
         for(int i = 0; i < lista_druzyn.size(); i++)
         {
-            System.out.println(lista_druzyn.get(i).getDruzyna());
+            System.out.print(lista_druzyn.get(i).getDruzyna() + "  ");
         }
+        System.out.println();
     }
 
+    public boolean czyZawiera(Druzyna dr1)
+    {
+        return lista_druzyn.contains(dr1);
+    }
 }

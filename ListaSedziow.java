@@ -9,42 +9,45 @@ public class ListaSedziow
 {
     private ArrayList<Sedzia> lista_sedziow;
     private File plik = new File("listaSedziow.txt");
-    private Scanner odczyt;
     private FileWriter doPliku;
-     
+    private Scanner odczyt;
+    
     public ListaSedziow()
     {
         lista_sedziow = new ArrayList<>();
     }
 
-    public void dodajSedziego(Sedzia sedzia) throws IOException
+    public void dodajSedziego(String sedzia) throws IOException
     {
-        lista_sedziow.add(sedzia);
+        Sedzia se = new Sedzia(sedzia);
+        lista_sedziow.add(se);
         doPliku = new FileWriter(plik, true);
-        doPliku.write(sedzia.getSedzia());
+        doPliku.write(sedzia);
         doPliku.write("\n");
-        doPliku.close();
+        doPliku.close();   
     }
 
-    public void usunSedziego(String nazwa_druzyny) throws IOException
+    public void usunSedziego(String imie_nazwisko) throws IOException
     {
-        for(int i = 0; i < lista_sedziow.size(); i++)
+        Sedzia pomoc = null;
+        for(Sedzia se1 : lista_sedziow)
         {
-            if(nazwa_druzyny == lista_sedziow.get(i).getSedzia())
+            if(se1.getSedzia().equals(imie_nazwisko))
             {
-                lista_sedziow.remove(lista_sedziow.get(i));
+                pomoc = se1;
             }
-            else 
+            else
                 continue;
-        }      
+        }     
+        lista_sedziow.remove(pomoc);
 
         doPliku = new FileWriter(plik, false);
-            
-        for(Sedzia sedzia : lista_sedziow)
-            {
-                doPliku.write(sedzia.getSedzia());
-                doPliku.write("\n");
-            }
+
+        for(Sedzia se2 : lista_sedziow)
+        {
+            doPliku.write(se2.getSedzia());
+            doPliku.write("\n");
+        }
         doPliku.close();
     }
 
@@ -52,11 +55,10 @@ public class ListaSedziow
     {
         odczyt = new Scanner(plik);
         String wiersz;
-        Sedzia sedzia;
         while(odczyt.hasNextLine())
             {
                 wiersz = odczyt.nextLine();
-                sedzia = new Sedzia(wiersz);
+                Sedzia sedzia = new Sedzia(wiersz);
                 lista_sedziow.add(sedzia);
             }
     }  
@@ -65,8 +67,13 @@ public class ListaSedziow
     {
         for(int i = 0; i < lista_sedziow.size(); i++)
         {
-            System.out.println(lista_sedziow.get(i).getSedzia());
+            System.out.print(lista_sedziow.get(i).getSedzia() + "  ");
         }
+        System.out.println();
     }
 
+    public boolean czyZawiera(Sedzia se1)
+    {
+        return lista_sedziow.contains(se1);
+    }
 }

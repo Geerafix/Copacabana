@@ -1,29 +1,29 @@
 public class Druzyna 
 {
     private String nazwa_druzyny;
-    int wynik_dwaognie, wynik_siatkowka, wynik_przeciaganieliny;
+    int wynik_dwaOgnie, wynik_siatkowka, wynik_przeciaganieLiny;
 
     public Druzyna(String nazwa_druzyny)
     {
         this.nazwa_druzyny = nazwa_druzyny;
-        wynik_dwaognie = 0;
+        wynik_dwaOgnie = 0;
         wynik_siatkowka = 0;
-        wynik_przeciaganieliny = 0;
+        wynik_przeciaganieLiny = 0;
     }
 
     public void dodajWynik(String sport)
     {
-        if(sport == "dwaognie")
+        if(sport.equals("dwaognie"))
         {
-            ++wynik_dwaognie;
+            ++wynik_dwaOgnie;
         }
-        else if(sport == "siatkowka")
+        else if(sport.equals("siatkowka"))
         {
             ++wynik_siatkowka;
         }
-        else if(sport == "przeciaganieliny")
+        else if(sport.equals("przeciaganieliny"))
         {
-            ++wynik_przeciaganieliny;
+            ++wynik_przeciaganieLiny;
         }
     }
 
@@ -31,5 +31,6 @@ public class Druzyna
     {
         return nazwa_druzyny;
     }
+    
 
 }
