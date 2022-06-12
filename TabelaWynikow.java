@@ -1,85 +1,53 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class TabelaWynikow 
+public class TabelaWynikow implements Serializable
 {
     private ArrayList<Spotkanie> lista_spotkan;
-    private File plik = new File("tabelaWynikow.txt");
-    private FileWriter doPliku;
+    private FileOutputStream fileIn;
+    private ObjectOutputStream objectIn;
+    private FileInputStream fileOut;
+    private ObjectInputStream objectOut;
+    
     public TabelaWynikow()
-    {
+    {   //konstruktor listy spotkan
         lista_spotkan = new ArrayList<>();
     }
 
-    public void dodajSpotkanie(Spotkanie spotkanie, String sport) throws IOException
-    {
-        if(sport.equals("siatkowka"))
-        {
-            lista_spotkan.add(spotkanie);
-            doPliku = new FileWriter(plik, true);
-            doPliku.write(spotkanie.getDruzyna1().getDruzyna() + " ");
-            doPliku.write(spotkanie.getDruzyna2().getDruzyna() + " ");
-            doPliku.write(spotkanie.getSport() + " ");
-            doPliku.write(spotkanie.getSedzia1().getSedzia() + " ");
-            doPliku.write(spotkanie.getSedzia2().getSedzia() + " ");
-            doPliku.write(spotkanie.getSedzia3().getSedzia() + " ");
-            doPliku.write(spotkanie.getZwyciezca() + "\n");
-            doPliku.close(); 
-        }
-        else
-        {
-            lista_spotkan.add(spotkanie);
-            doPliku = new FileWriter(plik, true);
-            doPliku.write(spotkanie.getDruzyna1().getDruzyna() + " ");
-            doPliku.write(spotkanie.getDruzyna2().getDruzyna() + " ");
-            doPliku.write(spotkanie.getSport() + " ");
-            doPliku.write(spotkanie.getSedzia1().getSedzia() + " ");
-            doPliku.write(spotkanie.getZwyciezca() + "\n");
-            doPliku.close();    
-        }
+    public void dodajSpotkanie(Spotkanie spotkanie) throws IOException
+    {   //dodanie spotkania i wpisanie do pliku
+        lista_spotkan.add(spotkanie);   
     }
 
-    public void zPliku() throws FileNotFoundException
-    {
-        Scanner odczyt = new Scanner(plik);
-        while(odczyt.hasNextLine())
-        {
-            Druzyna dr1 = new Druzyna(odczyt.next());
-            Druzyna dr2 = new Druzyna(odczyt.next());
-            String sport = odczyt.next();
-            if(sport.equals("siatkowka"))
-            {
-                Sedzia sedzia = new Sedzia(odczyt.next());
-                Sedzia pom1 = new Sedzia(odczyt.next());
-                Sedzia pom2 = new Sedzia(odczyt.next());
-                String zwyciezca = odczyt.next();
-                Spotkanie spotkanie = new Spotkanie(dr1, dr2, sedzia, pom1, pom2, "siatkowka", zwyciezca);
-                lista_spotkan.add(spotkanie);
-            }
-            else
-            {
-                Sedzia sedzia = new Sedzia(odczyt.next());
-                String zwyciezca = odczyt.next();
-                Spotkanie spotkanie = new Spotkanie(dr1, dr2, sport, sedzia, zwyciezca);
-                lista_spotkan.add(spotkanie);
-            }
-            if(odczyt.nextLine() == null)
-            {
-                continue;
-            }        
-        }
-        odczyt.close();
+    public void zPliku() throws IOException, ClassNotFoundException
+    {   //odczytanie spotkan z pliku
+        fileOut = new FileInputStream("listaSpotkan.dat");
+        objectOut = new ObjectInputStream(fileOut);
+        lista_spotkan = (ArrayList<Spotkanie>) objectOut.readObject();
+        fileOut.close();
+        objectOut.close();
+    }
+
+    public void listaDoPliku() throws IOException
+    {   //zapis listy spotkan do pliku jako obiektu
+        fileIn = new FileOutputStream("listaSpotkan.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        objectIn.writeObject(lista_spotkan);
+        fileIn.close();
+        objectIn.close();
     }
     
     public void wyswietl()
-    {
+    {   //wyswietlenie wszystkich spotkan
         for(Spotkanie spotkanie : lista_spotkan)
         {
-            System.out.print("Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
+            int i = 1;
+            System.out.print(i + ". Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
             spotkanie.getDruzyna2().getDruzyna() + "; " +
             "Sport: " + spotkanie.getSport() + "; " + 
             "Sedziowie: " + spotkanie.getSedzia1().getSedzia() + ", ");
@@ -93,6 +61,7 @@ public class TabelaWynikow
             }
             System.out.print("Zwyciezca: " + spotkanie.getZwyciezca());
             System.out.println();
+            ++i;
         }
     }
 

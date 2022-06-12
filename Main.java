@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import javax.swing.JFrame;
 
 public class Main 
 {
@@ -9,49 +8,46 @@ public class Main
         ListaDruzyn ldr = new ListaDruzyn();
         ListaSedziow lse = new ListaSedziow();
         TabelaWynikow tabw = new TabelaWynikow();
+        int i = 1;
 
         ldr.zPliku();
         lse.zPliku();
-        int i = 1;
+        tabw.zPliku();
 
-        MenuGlowne okno = new MenuGlowne();
-        okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        okno.setVisible(true);
-        /*
         while(i == 1)
         {
             switch(sc.next())
             {
-                case "siat" :
+                case "siatkowka" :
                 {
                     Druzyna dr1 = new Druzyna(sc.next());                 
                     Druzyna dr2 = new Druzyna(sc.next());
-                    String sport = sc.next();
                     Sedzia sedzia = new Sedzia(sc.next());
                     Sedzia pom1 = new Sedzia(sc.next());
                     Sedzia pom2 = new Sedzia(sc.next());
-                    Spotkanie spotkanie = new Spotkanie(dr1, dr2, sedzia, pom1, pom2, sport);
-                    tabw.dodajSpotkanie(spotkanie, "siatkowka");
+                    String zwyciezca = sc.next();
+                    Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "siatkowka", zwyciezca);
+                    tabw.dodajSpotkanie(spotkanie);
                     break;
                 }
-                case "dOgnie" :
+                case "dwaOgnie" :
                 {
                     Druzyna dr1 = new Druzyna(sc.next());                 
                     Druzyna dr2 = new Druzyna(sc.next());
-                    String sport = sc.next();
                     Sedzia sedzia = new Sedzia(sc.next());
-                    Spotkanie spotkanie = new Spotkanie(dr1, dr2, sport, sedzia);
-                    tabw.dodajSpotkanie(spotkanie, "dwaOgnie");
+                    String zwyciezca = sc.next();
+                    DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "dwaOgnie", sedzia, zwyciezca);
+                    tabw.dodajSpotkanie(spotkanie);
                     break;
                 }
-                case "pLiny" :
+                case "przeciaganieLiny" :
                 {
                     Druzyna dr1 = new Druzyna(sc.next());                 
                     Druzyna dr2 = new Druzyna(sc.next());
-                    String sport = sc.next();
                     Sedzia sedzia = new Sedzia(sc.next());
-                    Spotkanie spotkanie = new Spotkanie(dr1, dr2, sport, sedzia);
-                    tabw.dodajSpotkanie(spotkanie, "przeciaganieLiny");
+                    String zwyciezca = sc.next();
+                    PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "przeciaganieLiny", sedzia, zwyciezca);
+                    tabw.dodajSpotkanie(spotkanie);
                     break;
                 }
                 case "dodajD" :
@@ -84,13 +80,29 @@ public class Main
                     lse.wyswietl();
                     break;
                 }
+                case "spotkania" :
+                {
+                    tabw.wyswietl();
+                    break;
+                }
+                case "wyniki" :
+                {
+                    ldr.wyswietlWyniki(sc.next());
+                    break;
+                }
+                case "listaDoPliku" :
+                {
+                    ldr.listaDoPliku();
+                    lse.listaDoPliku();
+                    tabw.listaDoPliku();
+                    break;
+                }
                 case "end" :
                 {
                     i = 0;
                 }
            }
         }
-        */
+        sc.close();
     }
-
 }

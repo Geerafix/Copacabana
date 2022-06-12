@@ -1,79 +1,74 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class ListaSedziow 
+public class ListaSedziow implements Serializable
 {
     private ArrayList<Sedzia> lista_sedziow;
-    private File plik = new File("listaSedziow.txt");
-    private FileWriter doPliku;
-    private Scanner odczyt;
+    private FileOutputStream fileIn;
+    private ObjectOutputStream objectIn;
+    private FileInputStream fileOut;
+    private ObjectInputStream objectOut;
     
     public ListaSedziow()
-    {
+    {   //konstruktor listy sedziow
         lista_sedziow = new ArrayList<>();
     }
 
-    public void dodajSedziego(String sedzia) throws IOException
-    {
-        Sedzia se = new Sedzia(sedzia);
-        lista_sedziow.add(se);
-        doPliku = new FileWriter(plik, true);
-        doPliku.write(sedzia);
-        doPliku.write("\n");
-        doPliku.close();   
+    public void dodajSedziego(String imie_nazwisko) throws IOException
+    {   //dodawanie sedziego do listy poprzez podaną nazwe w parametrze i automatyczne wpisanie do pliku
+        fileIn = new FileOutputStream("listaSedziow.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        Sedzia se = new Sedzia(imie_nazwisko);
+        lista_sedziow.add(se);  
     }
 
     public void usunSedziego(String imie_nazwisko) throws IOException
-    {
-        Sedzia pomoc = null;
-        for(Sedzia se1 : lista_sedziow)
+    {   //usuniecie sedziego z listy sedziow poprzez podaną nazwe w parametrze
+        fileIn = new FileOutputStream("listaDruzyn.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        for(Sedzia se : lista_sedziow)
         {
-            if(se1.getSedzia().equals(imie_nazwisko))
+            if(se.getSedzia().equals(imie_nazwisko))
             {
-                pomoc = se1;
+                lista_sedziow.remove(se);
+                break;
             }
-            else
-                continue;
-        }     
-        lista_sedziow.remove(pomoc);
-
-        doPliku = new FileWriter(plik, false);
-
-        for(Sedzia se2 : lista_sedziow)
-        {
-            doPliku.write(se2.getSedzia());
-            doPliku.write("\n");
         }
-        doPliku.close();
+        //wpisanie do pliku zmodyfikowanej listy sedziow jako obiekt
+        objectIn.writeObject(lista_sedziow);
+        fileIn.close();
+        objectIn.close();
     }
 
-    public void zPliku() throws FileNotFoundException
-    {
-        odczyt = new Scanner(plik);
-        String wiersz;
-        while(odczyt.hasNextLine())
-            {
-                wiersz = odczyt.nextLine();
-                Sedzia sedzia = new Sedzia(wiersz);
-                lista_sedziow.add(sedzia);
-            }
+    public void zPliku() throws IOException, ClassNotFoundException
+    {   //odczyt druzyn z pliku
+        fileOut = new FileInputStream("listaSedziow.dat");
+        objectOut = new ObjectInputStream(fileOut);
+        lista_sedziow = (ArrayList<Sedzia>) objectOut.readObject();
+        fileOut.close();
+        objectOut.close();
     }  
+
+    public void listaDoPliku() throws IOException
+    {   //zapis listy druzyn do pliku jako obiektu
+        fileIn = new FileOutputStream("listaSedziow.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        objectIn.writeObject(lista_sedziow);
+        fileIn.close();
+        objectIn.close();
+    }
     
     public void wyswietl()
-    {
-        for(int i = 0; i < lista_sedziow.size(); i++)
+    {   //wyswietlanie wszystkich druzyn z listy
+        for(Sedzia se : lista_sedziow)
         {
-            System.out.print(lista_sedziow.get(i).getSedzia() + "  ");
+            System.out.print(se.getSedzia() + "  ");
         }
         System.out.println();
-    }
-
-    public boolean czyZawiera(Sedzia se1)
-    {
-        return lista_sedziow.contains(se1);
     }
 }

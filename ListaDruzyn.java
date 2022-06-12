@@ -1,79 +1,89 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class ListaDruzyn 
+public class ListaDruzyn implements Serializable
 {
     private ArrayList<Druzyna> lista_druzyn;
-    private File plik = new File("listaDruzyn.txt");
-    private FileWriter doPliku;
-    private Scanner odczyt;
+    private FileOutputStream fileIn;
+    private ObjectOutputStream objectIn;
+    private FileInputStream fileOut;
+    private ObjectInputStream objectOut;
 
     public ListaDruzyn()
-    {
+    {   //konstruktor listy druzyn
         lista_druzyn = new ArrayList<>();
     }
 
-    public void dodajDruzyne(String druzyna) throws IOException
-    {
-        Druzyna dr = new Druzyna(druzyna);
+    public void dodajDruzyne(String nazwa_druzyny) throws IOException 
+    {   //dodawanie druzyny do listy poprzez podaną nazwe w parametrze
+        fileIn = new FileOutputStream("listaDruzyn.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        Druzyna dr = new Druzyna(nazwa_druzyny);
         lista_druzyn.add(dr);
-        doPliku = new FileWriter(plik, true);
-        doPliku.write(druzyna);
-        doPliku.write("\n");
-        doPliku.close();
     }
 
     public void usunDruzyne(String nazwa_druzyny) throws IOException
-    {
-        Druzyna pomoc = null;
-        for(Druzyna dr1 : lista_druzyn)
+    {   //usuniecie druzyny z listy druzyn poprzez podaną nazwe w parametrze
+        fileIn = new FileOutputStream("listaDruzyn.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        for(Druzyna dr : lista_druzyn)
         {
-            if(dr1.getDruzyna().equals(nazwa_druzyny))
+            if(dr.getDruzyna().equals(nazwa_druzyny))
             {
-                pomoc = dr1;
+                lista_druzyn.remove(dr);
+                break;
             }
-            else
-                continue;
-        }     
-        lista_druzyn.remove(pomoc);
-
-        doPliku = new FileWriter(plik, false);
-
-        for(Druzyna dr2 : lista_druzyn)
-        {
-            doPliku.write(dr2.getDruzyna());
-            doPliku.write("\n");
         }
-        doPliku.close();
+        //wpisanie do pliku listy zmodyfikowanej jako obiekt
+        objectIn.writeObject(lista_druzyn);
+        fileIn.close();
+        objectIn.close();
     }
 
-    public void zPliku() throws FileNotFoundException
-    {
-        odczyt = new Scanner(plik);
-        String wiersz;
-        while(odczyt.hasNextLine())
-            {
-                wiersz = odczyt.nextLine();
-                Druzyna druzyna = new Druzyna(wiersz);
-                lista_druzyn.add(druzyna);
-            }
+    public void zPliku() throws IOException, ClassNotFoundException
+    {   //odczyt druzyn z pliku
+        fileOut= new FileInputStream("listaDruzyn.dat");
+        objectOut = new ObjectInputStream(fileOut);
+        lista_druzyn = (ArrayList<Druzyna>) objectOut.readObject();
+        fileOut.close();
+        objectOut.close();
     }  
-    
+
+    public void listaDoPliku() throws IOException
+    {   //zapis listy druzyn do pliku jako obiektu
+        fileIn = new FileOutputStream("listaDruzyn.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        objectIn.writeObject(lista_druzyn);
+        fileIn.close();
+        objectIn.close();
+    }
+
     public void wyswietl()
-    {
-        for(int i = 0; i < lista_druzyn.size(); i++)
+    {   //wyswietlanie wszystkich druzyn z listy
+        for(Druzyna dr : lista_druzyn)
         {
-            System.out.print(lista_druzyn.get(i).getDruzyna() + "  ");
+            System.out.print(dr.getDruzyna() + "  ");
         }
         System.out.println();
     }
 
-    public boolean czyZawiera(Druzyna dr1)
+    public void wyswietlWyniki(String nazwa_druzyny)
     {
-        return lista_druzyn.contains(dr1);
+        //wyswietlanie wynikow druzyny o podanej nazwie
+        for(Druzyna dr : lista_druzyn)
+        {
+            if(dr.getDruzyna().equals(nazwa_druzyny));
+            {
+                System.out.println("Siatkowka: " + dr.wynikSiatkowka());
+                System.out.println("Dwa Ognie: " + dr.wynikDwaOgnie());
+                System.out.println("Przeciaganie Liny: " + dr.wynikPrzeciaganieLiny());
+                break;
+            }
+        }
     }
 }
