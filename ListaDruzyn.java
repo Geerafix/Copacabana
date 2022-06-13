@@ -130,4 +130,13 @@ public class ListaDruzyn implements Serializable
     {
         return lista_pomocnicza.contains(nazwa_druzyny);
     }
+    //zwrocenie druzyny z listy po wpisaniu indeksu
+    public Druzyna getDruzyna(int indeks)
+    {
+        return lista_druzyn.get(indeks);
+    }
+    //zwraca ilosc druzyn
+    public int size() {
+        return lista_druzyn.size();
+    }
 }

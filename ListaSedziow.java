@@ -101,4 +101,13 @@ public class ListaSedziow implements Serializable
     {
         return lista_pomocnicza.contains(imie_nazwisko);
     }
+    //zwraca liczbe sedziow
+    public int size() {
+        return lista_sedziow.size();
+    }
+    //zwrocenie sedziego z listy po wpisaniu indeksu
+    public Sedzia getSedzia(int indeks)
+    {
+        return lista_sedziow.get(indeks);
+    }
 }
