@@ -46,7 +46,7 @@ public class ListaDruzyn implements Serializable
             }
             else
             throw new BrakDruzyny("Brak druzyny na liscie: " + nazwa_druzyny);
-        } catch(Exception e)
+        }   catch(Exception e)
         {
             e.printStackTrace();
         }
@@ -105,17 +105,17 @@ public class ListaDruzyn implements Serializable
     public void wyswietlWyniki(String nazwa_druzyny) throws BrakDruzyny
     {
         int i = 0;
-        try {
+        try{
             if(lista_pomocnicza.contains(nazwa_druzyny))
             {
                 i = lista_pomocnicza.indexOf(nazwa_druzyny);
                 System.out.println("Siatkowka: " + lista_druzyn.get(i).wynikSiatkowka());
                 System.out.println("Dwa Ognie: " + lista_druzyn.get(i).wynikDwaOgnie());
                 System.out.println("Przeciaganie Liny: " + lista_druzyn.get(i).wynikPrzeciaganieLiny());
-            }  
+            }   
             else
             throw new BrakDruzyny("Brak druzyny na liscie: " + nazwa_druzyny);
-        } catch(Exception e)
+        }   catch(Exception e)
         {
             e.printStackTrace();
         }
@@ -124,5 +124,10 @@ public class ListaDruzyn implements Serializable
     public ArrayList<Druzyna> zwrocListe()
     {
         return lista_druzyn;
+    }
+    //sprawdzenie czy lista zawiera dana druzyne
+    public boolean czyZawiera(String nazwa_druzyny)
+    {
+        return lista_pomocnicza.contains(nazwa_druzyny);
     }
 }

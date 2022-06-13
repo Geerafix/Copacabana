@@ -45,8 +45,8 @@ public class ListaSedziow implements Serializable
                 }
             }
             else
-            throw new BrakSedziego("Brak sedzi na liscie: " + imie_nazwisko);
-        } catch(Exception e)
+            throw new BrakSedziego("Brak druzyny na liscie: " + imie_nazwisko);
+        }   catch(Exception e)
         {
             e.printStackTrace();
         }
@@ -95,5 +95,10 @@ public class ListaSedziow implements Serializable
     public ArrayList<Sedzia> zwrocListe()
     {
         return lista_sedziow;
+    }
+    //sprawdzenie czy lista zawiera danego sedziego
+    public boolean czyZawiera(String imie_nazwisko)
+    {
+        return lista_pomocnicza.contains(imie_nazwisko);
     }
 }
