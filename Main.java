@@ -19,6 +19,12 @@ public class Main
         {
             switch(sc.next())
             {
+                case "menu" :
+                {
+                    MenuGlowne okno = new MenuGlowne();
+                    okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    okno.setVisible(true);
+                }
                 case "siatkowka" :
                 {
                     Druzyna dr1 = new Druzyna(sc.next());                 
