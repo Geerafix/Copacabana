@@ -11,6 +11,6 @@ public class Sedzia implements Serializable
     //zwrocenie nazwy sedzi
     public String getSedzia()
     {   
-        return imie_nazwisko;
+        return this.imie_nazwisko;
     }
 }

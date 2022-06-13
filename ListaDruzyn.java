@@ -28,17 +28,27 @@ public class ListaDruzyn implements Serializable
         lista_druzyn.add(dr);
     }
     //usuniecie druzyny z listy druzyn poprzez podaną nazwe w parametrze
-    public void usunDruzyne(String nazwa_druzyny) throws IOException
+    public void usunDruzyne(String nazwa_druzyny) throws IOException, BrakDruzyny
     { 
         fileIn = new FileOutputStream("listaDruzyn.dat");
         objectIn = new ObjectOutputStream(fileIn);
-        for(Druzyna dr : lista_druzyn)
-        {
-            if(dr.getDruzyna().equals(nazwa_druzyny))
+        try{
+            if(lista_pomocnicza.contains(nazwa_druzyny))
             {
-                lista_druzyn.remove(dr);
-                break;
+                for(Druzyna dr : lista_druzyn)
+                {
+                    if(dr.getDruzyna().equals(nazwa_druzyny))
+                    {
+                        lista_druzyn.remove(dr);
+                        break;
+                    }
+                }
             }
+            else
+            throw new BrakDruzyny("Brak druzyny na liscie: " + nazwa_druzyny);
+        } catch(Exception e)
+        {
+            e.printStackTrace();
         }
     //wpisanie do pliku listy zmodyfikowanej jako obiekt
         objectIn.writeObject(lista_druzyn);
@@ -76,7 +86,6 @@ public class ListaDruzyn implements Serializable
     public void pomoc()
     {   
         lista_pomocnicza = new ArrayList<>();
-        int i = 0;
         for(Druzyna dr : lista_druzyn)
         {
             lista_pomocnicza.add(dr.getDruzyna());
@@ -93,16 +102,23 @@ public class ListaDruzyn implements Serializable
         lista_druzyn.get(i).dodajWynik(sport);
     }
     //wyswietlanie wynikow druzyny o podanej nazwie
-    public void wyswietlWyniki(String nazwa_druzyny)
+    public void wyswietlWyniki(String nazwa_druzyny) throws BrakDruzyny
     {
         int i = 0;
-        if(lista_pomocnicza.contains(nazwa_druzyny))
+        try {
+            if(lista_pomocnicza.contains(nazwa_druzyny))
+            {
+                i = lista_pomocnicza.indexOf(nazwa_druzyny);
+                System.out.println("Siatkowka: " + lista_druzyn.get(i).wynikSiatkowka());
+                System.out.println("Dwa Ognie: " + lista_druzyn.get(i).wynikDwaOgnie());
+                System.out.println("Przeciaganie Liny: " + lista_druzyn.get(i).wynikPrzeciaganieLiny());
+            }  
+            else
+            throw new BrakDruzyny("Brak druzyny na liscie: " + nazwa_druzyny);
+        } catch(Exception e)
         {
-            i = lista_pomocnicza.indexOf(nazwa_druzyny);
-            System.out.println("Siatkowka: " + lista_druzyn.get(i).wynikSiatkowka());
-            System.out.println("Dwa Ognie: " + lista_druzyn.get(i).wynikDwaOgnie());
-            System.out.println("Przeciaganie Liny: " + lista_druzyn.get(i).wynikPrzeciaganieLiny());
-        }       
+            e.printStackTrace();
+        }
     }
     //zwrocenie listy druzyn
     public ArrayList<Druzyna> zwrocListe()

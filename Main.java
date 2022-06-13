@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args) throws Exception
     {
-        Scanner sc = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         ListaDruzyn ldr = new ListaDruzyn();
         ListaSedziow lse = new ListaSedziow();
         TabelaWynikow tabw = new TabelaWynikow();
@@ -14,25 +14,20 @@ public class Main
         lse.zPliku();
         tabw.zPliku();
         ldr.pomoc();
+        lse.pomoc();
 
         while(i == 1)
         {
-            switch(sc.next())
+            switch(input.next())
             {
-                case "menu" :
-                {
-                    MenuGlowne okno = new MenuGlowne();
-                    okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    okno.setVisible(true);
-                }
                 case "siatkowka" :
                 {
-                    Druzyna dr1 = new Druzyna(sc.next());                 
-                    Druzyna dr2 = new Druzyna(sc.next());
-                    Sedzia sedzia = new Sedzia(sc.next());
-                    Sedzia pom1 = new Sedzia(sc.next());
-                    Sedzia pom2 = new Sedzia(sc.next());
-                    String zwyciezca = sc.next();
+                    Druzyna dr1 = new Druzyna(input.next());                 
+                    Druzyna dr2 = new Druzyna(input.next());
+                    Sedzia sedzia = new Sedzia(input.next());
+                    Sedzia pom1 = new Sedzia(input.next());
+                    Sedzia pom2 = new Sedzia(input.next());
+                    String zwyciezca = input.next();
                     Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "siatkowka", zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "siatkowka");
@@ -40,10 +35,10 @@ public class Main
                 }
                 case "dwaOgnie" :
                 {
-                    Druzyna dr1 = new Druzyna(sc.next());                 
-                    Druzyna dr2 = new Druzyna(sc.next());
-                    Sedzia sedzia = new Sedzia(sc.next());
-                    String zwyciezca = sc.next();
+                    Druzyna dr1 = new Druzyna(input.next());                 
+                    Druzyna dr2 = new Druzyna(input.next());
+                    Sedzia sedzia = new Sedzia(input.next());
+                    String zwyciezca = input.next();
                     DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "dwaOgnie", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "dwaOgnie");
@@ -51,10 +46,10 @@ public class Main
                 }
                 case "przeciaganieLiny" :
                 {
-                    Druzyna dr1 = new Druzyna(sc.next());                 
-                    Druzyna dr2 = new Druzyna(sc.next());
-                    Sedzia sedzia = new Sedzia(sc.next());
-                    String zwyciezca = sc.next();
+                    Druzyna dr1 = new Druzyna(input.next());                 
+                    Druzyna dr2 = new Druzyna(input.next());
+                    Sedzia sedzia = new Sedzia(input.next());
+                    String zwyciezca = input.next();
                     PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "przeciaganieLiny", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "przeciaganieLiny");
@@ -62,24 +57,30 @@ public class Main
                 }
                 case "dodajD" :
                 {
-                    ldr.dodajDruzyne(sc.next());
+                    ldr.dodajDruzyne(input.next());
+                    ldr.pomoc();
                     ldr.doPliku();
                     break;
                 }
                 case "dodajS" :
                 {
-                    lse.dodajSedziego(sc.next());
+                    lse.dodajSedziego(input.next());
+                    lse.pomoc();
                     lse.doPliku();
                     break;
                 }
                 case "usunD" :
                 {
-                    ldr.usunDruzyne(sc.next());
+                    ldr.usunDruzyne(input.next());
+                    ldr.pomoc();
+                    ldr.doPliku();
                     break;
                 }
                 case "usunS" :
                 {
-                    lse.usunSedziego(sc.next());
+                    lse.usunSedziego(input.next());
+                    lse.pomoc();
+                    lse.doPliku();
                     break;
                 }
                 case "druzyny" :
@@ -99,21 +100,18 @@ public class Main
                 }
                 case "wyniki" :
                 {
-                    ldr.wyswietlWyniki(sc.next());
+                    ldr.wyswietlWyniki(input.next());
                     break;
                 }
-                case "ldp" :
+                case "end" :
                 {
                     tabw.doPliku();
                     ldr.doPliku();
                     lse.doPliku();
-                }
-                case "end" :
-                {
                     i = 0;
                 }
            }
         }
-        sc.close();
+        input.close();
     }
 }

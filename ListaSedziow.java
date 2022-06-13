@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ListaSedziow implements Serializable
 {
     private ArrayList<Sedzia> lista_sedziow;
+    private ArrayList<String> lista_pomocnicza;
     private FileOutputStream fileIn;
     private ObjectOutputStream objectIn;
     private FileInputStream fileOut;
@@ -27,17 +28,27 @@ public class ListaSedziow implements Serializable
         lista_sedziow.add(se);  
     }
     //usuniecie sedziego z listy sedziow poprzez podaną nazwe w parametrze
-    public void usunSedziego(String imie_nazwisko) throws IOException
+    public void usunSedziego(String imie_nazwisko) throws IOException, BrakSedziego
     {   
         fileIn = new FileOutputStream("listaDruzyn.dat");
         objectIn = new ObjectOutputStream(fileIn);
-        for(Sedzia se : lista_sedziow)
-        {
-            if(se.getSedzia().equals(imie_nazwisko))
+        try{
+            if(lista_pomocnicza.contains(imie_nazwisko))
             {
-                lista_sedziow.remove(se);
-                break;
+                for(Sedzia se : lista_sedziow)
+                {
+                    if(se.getSedzia().equals(imie_nazwisko))
+                    {
+                        lista_sedziow.remove(se);
+                        break;
+                    }
+                }
             }
+            else
+            throw new BrakSedziego("Brak sedzi na liscie: " + imie_nazwisko);
+        } catch(Exception e)
+        {
+            e.printStackTrace();
         }
     //wpisanie do pliku zmodyfikowanej listy sedziow jako obiekt
         objectIn.writeObject(lista_sedziow);
@@ -61,6 +72,15 @@ public class ListaSedziow implements Serializable
         objectIn.writeObject(lista_sedziow);
         fileIn.close();
         objectIn.close();
+    }
+    //tworzenie pomocniczej listy do sprawdzania czy dany sedzia jest na liscie
+    public void pomoc()
+    {   
+        lista_pomocnicza = new ArrayList<>();
+        for(Sedzia se : lista_sedziow)
+        {
+            lista_pomocnicza.add(se.getSedzia());
+        }
     }
     //wyswietlanie wszystkich druzyn z listy
     public void wyswietl()
