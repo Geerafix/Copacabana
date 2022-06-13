@@ -1,19 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 
 public class MenuGlowne extends JFrame implements ActionListener
 {
-    JButton bSedziowie, bDruzyny, bOrganizacja, bWyniki, bWyjscie;
+    JButton bSedziowie, bDruzyny, bOrganizacja, bWyniki, bWyjscie, bFinal;
     JLabel lTytul, lSciezka;
     public MenuGlowne()
     {
@@ -43,7 +35,7 @@ public class MenuGlowne extends JFrame implements ActionListener
         add(bDruzyny);
         bDruzyny.addActionListener(this);
 
-        bOrganizacja = new JButton("Organizacja rozgrywek");
+        bOrganizacja = new JButton("Organizacja spotkań");
         bOrganizacja.setBounds(110,220,250,20);
         add(bOrganizacja);
         bOrganizacja.addActionListener(this);
@@ -70,10 +62,23 @@ public class MenuGlowne extends JFrame implements ActionListener
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
         }
+        else if(zrodlo==bDruzyny)
+        {
+            dispose();
+            MenuDruzyny frame = new MenuDruzyny();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        }
+        else if(zrodlo==bOrganizacja)
+        {
+            dispose();
+            MenuOrganizacja okno = new MenuOrganizacja();
+            okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            okno.setVisible(true);
+        }
         else if(zrodlo==bWyjscie)
         {
             dispose();
         }
-        
     }
 }

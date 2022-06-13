@@ -4,33 +4,33 @@ import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 
-public class MenuSedziowie extends JFrame implements ActionListener
+public class MenuDruzyny extends JFrame implements ActionListener
 {
     JLabel lSciezka;
     JButton bDodawanie, bUsuwanie, bPrzeglad, bPowrot;
-    public MenuSedziowie()
+    public MenuDruzyny()
     {
         setSize(500,500);
-        setTitle("Menu Sedziowie");
+        setTitle("Menu Druzyny");
         setLayout(null);
 
-        lSciezka = new JLabel("Zarządzanie Sędziami");
-        lSciezka.setBounds(161,30,400,200);
+        lSciezka = new JLabel("Zarządzanie Drużynami");
+        lSciezka.setBounds(155,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        bDodawanie = new JButton("Dodawanie sędziów");
+        bDodawanie = new JButton("Dodawanie drużyn");
         bDodawanie.setBounds(110,150,250,20);
         add(bDodawanie);
         bDodawanie.addActionListener(this);
 
-        bUsuwanie = new JButton("Usuwanie sędziów");
+        bUsuwanie = new JButton("Usuwanie drużyn");
         bUsuwanie.setBounds(110,185,250,20);
         add(bUsuwanie);
         bUsuwanie.addActionListener(this);
 
-        bPrzeglad = new JButton("Przegląd sędziów");
+        bPrzeglad = new JButton("Przegląd drużyn");
         bPrzeglad.setBounds(110,220,250,20);
         add(bPrzeglad);
         bPrzeglad.addActionListener(this);
@@ -42,9 +42,9 @@ public class MenuSedziowie extends JFrame implements ActionListener
 
     }
     @Override
-    public void actionPerformed(ActionEvent e) //e - obiekt zdarzenia wysylany przez przycisk do sluchacza zdarzen
+    public void actionPerformed(ActionEvent e)
     {
-        Object zrodlo = e.getSource(); //sprawdza ktory przycisk jest zrodlem zdarzenia
+        Object zrodlo = e.getSource();
         if(zrodlo==bPowrot)
         {
             dispose();
@@ -55,48 +55,48 @@ public class MenuSedziowie extends JFrame implements ActionListener
         else if(zrodlo==bDodawanie)
         {
             dispose();
-            MenuDodawanieS okno = new MenuDodawanieS();
+            MenuDodawanieD okno = new MenuDodawanieD();
             okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             okno.setVisible(true);
         }
         else if(zrodlo==bUsuwanie)
         {
             dispose();
-            MenuUsuwanieS okno = new MenuUsuwanieS();
+            MenuUsuwanieD okno = new MenuUsuwanieD();
             okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             okno.setVisible(true);
         }
         else if(zrodlo==bPrzeglad)
         {
             dispose();
-            MenuPrzegladS okno = new MenuPrzegladS();
+            MenuPrzegladD okno = new MenuPrzegladD();
             okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             okno.setVisible(true);
         }
     }
 }
 
-class MenuDodawanieS extends JFrame implements ActionListener
+class MenuDodawanieD extends JFrame implements ActionListener
 {
     JLabel lSciezka, lWpiszSedziego;
     JButton bDodaj, bPowrot;
     JTextField tSedzia;
     String NowySedzia;
 
-    public MenuDodawanieS()
+    public MenuDodawanieD()
     {
         setSize(500,500);
-        setTitle("Dodawanie Sędziów");
+        setTitle("Dodawanie Drużyn");
         setLayout(null);
 
-        lSciezka = new JLabel("Dodawanie Sędziów");
-        lSciezka.setBounds(167,30,400,200);
+        lSciezka = new JLabel("Dodawanie Drużyn");
+        lSciezka.setBounds(172,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lWpiszSedziego = new JLabel("Proszę wpisać nowego sędziego do listy sędziów");
-        lWpiszSedziego.setBounds(80,150,350,20);
+        lWpiszSedziego = new JLabel("Proszę wpisać nową drużynę do listy drużyn");
+        lWpiszSedziego.setBounds(98,150,350,20);
         lWpiszSedziego.setForeground(Color.BLACK);
         lWpiszSedziego.setFont(new Font("SansSerif", Font.BOLD, 13));
         add(lWpiszSedziego);
@@ -105,7 +105,7 @@ class MenuDodawanieS extends JFrame implements ActionListener
         tSedzia.setBounds(173,180,130,20);
         add(tSedzia);
 
-        bDodaj = new JButton("Dodaj sędziego");
+        bDodaj = new JButton("Dodaj drużynę");
         bDodaj.setBounds(110,220,250,20);
         add(bDodaj);
         bDodaj.addActionListener(this);
@@ -133,43 +133,42 @@ class MenuDodawanieS extends JFrame implements ActionListener
         else if(zrodlo==bPowrot)
         {
             dispose();
-            MenuSedziowie okno = new MenuSedziowie();
-            okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            okno.setVisible(true);
+            MenuDruzyny frame = new MenuDruzyny();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
         }
     }
 }
 
-class MenuUsuwanieS extends JFrame implements ActionListener
+class MenuUsuwanieD extends JFrame implements ActionListener
 {
-    JLabel lSciezka, lWpiszSedziego;
+    JLabel lSciezka, lWpiszDruzyne;
     JButton bUsun, bPowrot;
-    JTextField tSedzia;
-    String NowySedzia;
+    JTextField tDruzyna;
 
-    public MenuUsuwanieS()
+    public MenuUsuwanieD()
     {
         setSize(500,500);
-        setTitle("Usuwanie Sędziów");
+        setTitle("Usuwanie Drużyn");
         setLayout(null);
 
-        lSciezka = new JLabel("Usuwanie Sędziów");
-        lSciezka.setBounds(170,30,400,200);
+        lSciezka = new JLabel("Usuwanie Drużyn");
+        lSciezka.setBounds(175,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lWpiszSedziego = new JLabel("Proszę wpisać sędziego do usunięcia z listy sędziów");
-        lWpiszSedziego.setBounds(80,150,350,20);
-        lWpiszSedziego.setForeground(Color.BLACK);
-        lWpiszSedziego.setFont(new Font("SansSerif", Font.BOLD, 13));
-        add(lWpiszSedziego);
+        lWpiszDruzyne = new JLabel("Proszę wpisać drużynę do usunięcia z listy drużyn");
+        lWpiszDruzyne.setBounds(80,150,350,20);
+        lWpiszDruzyne.setForeground(Color.BLACK);
+        lWpiszDruzyne.setFont(new Font("SansSerif", Font.BOLD, 13));
+        add(lWpiszDruzyne);
 
-        tSedzia = new JTextField("");
-        tSedzia.setBounds(173,180,130,20);
-        add(tSedzia);
+        tDruzyna = new JTextField("");
+        tDruzyna.setBounds(173,180,130,20);
+        add(tDruzyna);
 
-        bUsun = new JButton("Usuń sędziego");
+        bUsun = new JButton("Usuń drużynę");
         bUsun.setBounds(110,220,250,20);
         add(bUsun);
         bUsun.addActionListener(this);
@@ -183,41 +182,29 @@ class MenuUsuwanieS extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         Object zrodlo = e.getSource();
-        if(zrodlo==bUsun)
-        {
-            NowySedzia = tSedzia.getText();
-            ListaSedziow lse = new ListaSedziow();
-            try {lse.zPliku();} catch (ClassNotFoundException | IOException e1) {e1.printStackTrace();}
-            try {lse.usunSedziego(NowySedzia);} catch (IOException e1) {e1.printStackTrace();}
-            
-            dispose();
-            MenuSedziowie okno = new MenuSedziowie();
-            okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            okno.setVisible(true);
-        }
-        else if(zrodlo==bPowrot)
+        if(zrodlo==bPowrot)
         {
             dispose();
-            MenuSedziowie okno = new MenuSedziowie();
-            okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            okno.setVisible(true);
+            MenuDruzyny frame = new MenuDruzyny();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
         }
     }
 }
 
-class MenuPrzegladS extends JFrame implements ActionListener 
+class MenuPrzegladD extends JFrame implements ActionListener 
 {
     JLabel lSciezka;
     JButton bPowrot;
 
-    public MenuPrzegladS()
+    public MenuPrzegladD()
     {
         setSize(500,500);
-        setTitle("Przegląd Sędziów");
+        setTitle("Przegląd Drużyn");
         setLayout(null);
 
-        lSciezka = new JLabel("Przegląd Sędziów");
-        lSciezka.setBounds(172,30,400,200);
+        lSciezka = new JLabel("Przegląd Drużyn");
+        lSciezka.setBounds(175,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
@@ -234,11 +221,9 @@ class MenuPrzegladS extends JFrame implements ActionListener
         if(zrodlo==bPowrot)
         {
             dispose();
-            MenuSedziowie frame = new MenuSedziowie();
+            MenuDruzyny frame = new MenuDruzyny();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
         }
     }
 }
-
-
