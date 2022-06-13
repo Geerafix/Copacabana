@@ -3,9 +3,9 @@ import java.util.Random;
 
 public class Final extends Polfinal {
 
-    public  Druzyna tablicaDruzynFinaluSiatkowki = new Druzyna [2];
-    public  Druzyna tablicaDruzynFinaluDwochOgni = new Druzyna [2];
-    public  Druzyna tablicaDruzynFinaluPrzeciaganiaLiny = new Druzyna [2];
+    public  Druzyna[] tablicaDruzynFinaluSiatkowki = new Druzyna [2];
+    public  Druzyna[] tablicaDruzynFinaluDwochOgni = new Druzyna [2];
+    public  Druzyna[] tablicaDruzynFinaluPrzeciaganiaLiny = new Druzyna [2];
 
     public TabelaWynikow spotkaniaFinalu = new TabelaWynikow ();
 
@@ -13,10 +13,12 @@ public class Final extends Polfinal {
     public int[] wynikFinaluDwochOgni = new int [2];
     public int[] wynikFinaluPrzeciaganiaLiny = new int [2];
 
+    //konstruktor, parametrem jest obiekt klasy ListaDruzyn, ktora wywoluje konstruktor klasy Polfinal
     Final (ListaDruzyn listaDruzyn)
     {
-        int miejsceTablicy = 0;
         super(listaDruzyn);
+        int miejsceTablicy = 0;
+
         for (int i=0; i<4; i++)
         {
             // problem gdy wynik jest 0 2 2 2 dla druzyn, druga druzyna z 2 punktami zostanie pominieta
@@ -49,54 +51,137 @@ public class Final extends Polfinal {
             }
         }
     }
+    /*
+    symulacja rozgrywek w finale jako parametr przyjmujaca obiekt klasy ListaSedziow
+    ktora wykorzystuje do symulacji polfinalu (w klasie bazowej) oraz do symulacji finalu
+    */
 
     void Symuluj (ListaSedziow listaSedziow) {
+        super.Symuluj(listaSedziow);
 
         Random symulacja = new Random();
         int zwyciezca, symSedzia;
-        Sedzia sedzia;
+        Sedzia sedzia, sedziaPomocniczy1, sedziaPomocniczy2;
+        Spotkanie spotkanie;
 
-        for(int i=0; i<2; i++)
+        for(int i=0; i<4; i++)
         {
-            wynikFinaluDwochOgni[i] = 0;
+            wynikiPolfinaluDwochOgni[i] = 0;
         }
-        for(int i=0; i<2; i++)
+        for(int i=0; i<4; i++)
         {
-            wynikiFinaluSiatkowki[i] = 0;
+            wynikiPolfinaluSiatkowki[i] = 0;
         }
-        for(int i=0; i<2; i++)
+        for(int i=0; i<4; i++)
         {
-            wynikFinaluPrzeciaganiaLiny[i] = 0;
+            wynikiPolfinaluPrzeciaganiaLiny[i] = 0;
         }
 
-        zyciezca = symulacja.nextInt(2);
-        symSedzia = symulacja.nextInt(listaSedziow.size()+1);
-        sedzia = listaSedziow.getSedzia(symSedzia);
+        for (int i=0; i<3; i++)
+        {
+            for(int j=i+1; j<4; j++)
+            {
+            zwyciezca = symulacja.nextInt(2);
+            symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+            sedzia = listaSedziow.getSedzia(symSedzia);
 
-        wynikFinaluDwochOgni[zwyciezca] = 1;
+            if (zwyciezca == 0)
+                {
+                    wynikiPolfinaluDwochOgni[i]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
+                     tablicaDruzynPolfinaluDwochOgni[j],
+                     "przeciaganie_liny",
+                      sedzia,
+                       tablicaDruzynPolfinaluDwochOgni[i].getDruzyna() );
+                }
+                else 
+                {
+                    wynikiPolfinaluDwochOgni[j]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
+                     tablicaDruzynPolfinaluDwochOgni[j],
+                     "przeciaganie_liny",
+                      sedzia,
+                       tablicaDruzynPolfinaluDwochOgni[j].getDruzyna() );
+                }
 
-        spotkanie = new Spotkanie(tablicaDruzynFinaluDwochOgni[0], tablicaDruzynFinaluDwochOgni[1], sedzia, "dwa_ognie");
+            spotkaniaPolfinalu.dodajSpotkanie(spotkanie);
+            }
+        }
+
+        for (int i=0; i<1; i++)
+        {
+            for(int j=i+1; j<2; j++)
+            {
+                zwyciezca = symulacja.nextInt(2);
+                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                sedzia = listaSedziow.getSedzia(symSedzia);
+
+                if (zwyciezca == 0)
+                {
+                    wynikiPolfinaluPrzeciaganiaLiny[i]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluPrzeciaganiaLiny[i],
+                     tablicaDruzynPolfinaluPrzeciaganiaLiny[j],
+                     "przeciaganie_liny",
+                      sedzia,
+                       tablicaDruzynPolfinaluPrzeciaganiaLiny[i].getDruzyna() );
+                }
+                else 
+                {
+                    wynikiPolfinaluPrzeciaganiaLiny[j]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluPrzeciaganiaLiny[i],
+                     tablicaDruzynPolfinaluPrzeciaganiaLiny[j],
+                     "przeciaganie_liny",
+                      sedzia,
+                       tablicaDruzynPolfinaluPrzeciaganiaLiny[j].getDruzyna() );
+                }
+
+                
+                
+
+                spotkaniaPolfinalu.dodajSpotkanie(spotkanie);
+            }
+        }
+
+        for (int i=0; i<3; i++)
+        {
+            for(int j=i+1; j<4; j++)
+            {
+              zwyciezca = symulacja.nextInt(2);
+                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                sedzia = listaSedziow.getSedzia(symSedzia);
+                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                sedziaPomocniczy1 = listaSedziow.getSedzia(symSedzia);
+                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                sedziaPomocniczy2 = listaSedziow.getSedzia(symSedzia);
+
+
+                if(zwyciezca == 0)
+                {
+                    wynikiPolfinaluSiatkowki[i]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluSiatkowki[i],
+                     tablicaDruzynPolfinaluSiatkowki[j],
+                      sedzia,
+                       sedziaPomocniczy1,
+                        sedziaPomocniczy2,
+                        "siatkowka",
+                         tablicaDruzynPolfinaluSiatkowki[i].getDruzyna() );
+                }
+                else
+                {
+                    wynikiPolfinaluSiatkowki[j]++;
+                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluSiatkowki[i],
+                     tablicaDruzynPolfinaluSiatkowki[j],
+                      sedzia,
+                       sedziaPomocniczy1,
+                        sedziaPomocniczy2,
+                        "siatkowka",
+                         tablicaDruzynPolfinaluSiatkowki[j].getDruzyna() );
+                }
                
-        spotkaniaFinalu.dodajSpotkanie(spotkanie);
 
-        zyciezca = symulacja.nextInt(2);
-        symSedzia = symulacja.nextInt(listaSedziow.size()+1);
-        sedzia = listaSedziow.getSedzia(symSedzia);
-
-        wynikFinaluPrzeciaganiaLiny[zwyciezca] = 1;
-
-        spotkanie = new Spotkanie(tablicaDruzynFinaluPrzeciaganiaLiny[0], tablicaDruzynFinaluPrzeciaganiaLiny[1], sedzia, "przeciaganie_liny");
-                
-        spotkaniaFinalu.dodajSpotkanie(spotkanie);
-
-        zyciezca = symulacja.nextInt(2);
-        symSedzia = symulacja.nextInt(listaSedziow.size()+1);
-        sedzia = listaSedziow.getSedzia(symSedzia);
-
-        wynikFinaluSiatkowki[zwyciezca] = 1;
-
-        spotkanie = new Spotkanie(tablicaDruzynFinaluSiatkowki[0], tablicaDruzynFinaluSiatkowki[1], sedzia, "siatkowka");
-                
-        spotkaniaFinalu.dodajSpotkanie(spotkanie);
+                spotkaniaFinalu.dodajSpotkanie(spotkanie);  
+            }
+            
+        }
     }
 }
