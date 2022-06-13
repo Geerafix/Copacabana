@@ -13,6 +13,7 @@ public class Main
         ldr.zPliku();
         lse.zPliku();
         tabw.zPliku();
+        ldr.pomoc();
 
         while(i == 1)
         {
@@ -28,6 +29,7 @@ public class Main
                     String zwyciezca = sc.next();
                     Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "siatkowka", zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
+                    ldr.dodajWynik(zwyciezca, "siatkowka");
                     break;
                 }
                 case "dwaOgnie" :
@@ -38,6 +40,7 @@ public class Main
                     String zwyciezca = sc.next();
                     DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "dwaOgnie", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
+                    ldr.dodajWynik(zwyciezca, "dwaOgnie");
                     break;
                 }
                 case "przeciaganieLiny" :
@@ -48,16 +51,19 @@ public class Main
                     String zwyciezca = sc.next();
                     PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "przeciaganieLiny", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
+                    ldr.dodajWynik(zwyciezca, "przeciaganieLiny");
                     break;
                 }
                 case "dodajD" :
                 {
                     ldr.dodajDruzyne(sc.next());
+                    ldr.doPliku();
                     break;
                 }
                 case "dodajS" :
                 {
                     lse.dodajSedziego(sc.next());
+                    lse.doPliku();
                     break;
                 }
                 case "usunD" :
@@ -70,12 +76,12 @@ public class Main
                     lse.usunSedziego(sc.next());
                     break;
                 }
-                case "pokazD" :
+                case "druzyny" :
                 {
                     ldr.wyswietl();
                     break;
                 }
-                case "pokazS" :
+                case "sedziowie" :
                 {
                     lse.wyswietl();
                     break;
@@ -90,12 +96,11 @@ public class Main
                     ldr.wyswietlWyniki(sc.next());
                     break;
                 }
-                case "listaDoPliku" :
+                case "ldp" :
                 {
-                    ldr.listaDoPliku();
-                    lse.listaDoPliku();
-                    tabw.listaDoPliku();
-                    break;
+                    tabw.doPliku();
+                    ldr.doPliku();
+                    lse.doPliku();
                 }
                 case "end" :
                 {

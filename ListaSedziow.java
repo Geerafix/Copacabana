@@ -13,22 +13,22 @@ public class ListaSedziow implements Serializable
     private ObjectOutputStream objectIn;
     private FileInputStream fileOut;
     private ObjectInputStream objectOut;
-    
+    //konstruktor listy sedziow
     public ListaSedziow()
-    {   //konstruktor listy sedziow
+    {   
         lista_sedziow = new ArrayList<>();
     }
-
+    //dodawanie sedziego do listy poprzez podaną nazwe w parametrze i automatyczne wpisanie do pliku
     public void dodajSedziego(String imie_nazwisko) throws IOException
-    {   //dodawanie sedziego do listy poprzez podaną nazwe w parametrze i automatyczne wpisanie do pliku
+    {   
         fileIn = new FileOutputStream("listaSedziow.dat");
         objectIn = new ObjectOutputStream(fileIn);
         Sedzia se = new Sedzia(imie_nazwisko);
         lista_sedziow.add(se);  
     }
-
+    //usuniecie sedziego z listy sedziow poprzez podaną nazwe w parametrze
     public void usunSedziego(String imie_nazwisko) throws IOException
-    {   //usuniecie sedziego z listy sedziow poprzez podaną nazwe w parametrze
+    {   
         fileIn = new FileOutputStream("listaDruzyn.dat");
         objectIn = new ObjectOutputStream(fileIn);
         for(Sedzia se : lista_sedziow)
@@ -39,36 +39,41 @@ public class ListaSedziow implements Serializable
                 break;
             }
         }
-        //wpisanie do pliku zmodyfikowanej listy sedziow jako obiekt
+    //wpisanie do pliku zmodyfikowanej listy sedziow jako obiekt
         objectIn.writeObject(lista_sedziow);
         fileIn.close();
         objectIn.close();
     }
-
+    //odczyt druzyn z pliku
     public void zPliku() throws IOException, ClassNotFoundException
-    {   //odczyt druzyn z pliku
+    {   
         fileOut = new FileInputStream("listaSedziow.dat");
         objectOut = new ObjectInputStream(fileOut);
         lista_sedziow = (ArrayList<Sedzia>) objectOut.readObject();
         fileOut.close();
         objectOut.close();
     }  
-
-    public void listaDoPliku() throws IOException
-    {   //zapis listy druzyn do pliku jako obiektu
+    //zapis listy druzyn do pliku jako obiektu
+    public void doPliku() throws IOException
+    {   
         fileIn = new FileOutputStream("listaSedziow.dat");
         objectIn = new ObjectOutputStream(fileIn);
         objectIn.writeObject(lista_sedziow);
         fileIn.close();
         objectIn.close();
     }
-    
+    //wyswietlanie wszystkich druzyn z listy
     public void wyswietl()
-    {   //wyswietlanie wszystkich druzyn z listy
+    {  
         for(Sedzia se : lista_sedziow)
         {
             System.out.print(se.getSedzia() + "  ");
         }
         System.out.println();
+    }
+    //zwrocenie listy sedziow
+    public ArrayList<Sedzia> zwrocListe()
+    {
+        return lista_sedziow;
     }
 }

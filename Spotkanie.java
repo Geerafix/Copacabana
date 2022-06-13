@@ -6,18 +6,18 @@ public class Spotkanie implements Serializable
     private Sedzia sedzia1, sedzia2, sedzia3;
     private String sport;
     private String zwyciezca;
-
+    //konstruktor rozgrywek "Dwa Ognie" oraz "Przeciaganie Liny"
     public Spotkanie(Druzyna druzyna1, Druzyna druzyna2, String sport, Sedzia sedzia1, String zwyciezca)
-    {   //konstruktor rozgrywek 'dwaOgnie' oraz 'przeciaganieLiny'
+    {  
         this.druzyna1 = druzyna1;
         this.druzyna2 = druzyna2;
         this.sedzia1 = sedzia1;
         this.sport = sport;
         this.zwyciezca = zwyciezca;
     }
-
+    //kosntruktor rozgrywki "Siatkowka"
     public Spotkanie(Druzyna druzyna1, Druzyna druzyna2, Sedzia sedzia1, Sedzia pomocniczy1, Sedzia pomocniczy2, String sport, String zwyciezca)
-    {   //kosntruktor rozgrywki 'siatkowka'
+    {
         this.druzyna1 = druzyna1;
         this.druzyna2 = druzyna2;
         this.sedzia1 = sedzia1;
@@ -26,39 +26,39 @@ public class Spotkanie implements Serializable
         this.sport = sport;
         this.zwyciezca = zwyciezca;
     }
-   
+    //zwrocenie obiektu druzyny 1
     public Druzyna getDruzyna1()
-    {   //zwrocenie obiektu druzyny 1
+    {   
         return this.druzyna1;
     }
-
+    //zwrocenie obiektu druzyny 2
     public Druzyna getDruzyna2()
-    {   //zwrocenie obiektu druzyny 2
+    {   
         return this.druzyna2;
     }
-
+    //zwrocenie obiektu sedzi 1
     public Sedzia getSedzia1()
     {   //zwrocenie obiektu sedzi
         return this.sedzia1;
     }
-
+    //zwrocenie obiektu sedzi pomocniczego 1
     public Sedzia getSedzia2()
-    {   //zwrocenie obiektu sedzi pomocniczego 1
+    {   
         return this.sedzia2;
     }
-
+    //zwrocenie obiektu sedzi pomocniczego 2
     public Sedzia getSedzia3()
-    {   //zwrocenie obiektu sedzi pomocniczego 2
+    {   
         return this.sedzia3;
     }
-
+    //zwrocenie nazwy rozgrywki
     public String getSport()
-    {   //zwrocenie nazwy rozgrywki
+    {   
         return sport;
     }
-
+    //zwrocenie nazwy zwyciezcy
     public String getZwyciezca()
-    {   //zwrocenie nazwy zwyciezcy
+    {   
         return zwyciezca;
     }
     

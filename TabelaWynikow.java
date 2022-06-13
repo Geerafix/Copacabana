@@ -13,41 +13,40 @@ public class TabelaWynikow implements Serializable
     private ObjectOutputStream objectIn;
     private FileInputStream fileOut;
     private ObjectInputStream objectOut;
-    
+    //konstruktor listy spotkan
     public TabelaWynikow()
-    {   //konstruktor listy spotkan
+    {   
         lista_spotkan = new ArrayList<>();
     }
-
+    //dodanie spotkania
     public void dodajSpotkanie(Spotkanie spotkanie) throws IOException
-    {   //dodanie spotkania i wpisanie do pliku
+    {  
         lista_spotkan.add(spotkanie);   
     }
-
+    //odczytanie spotkan z pliku
     public void zPliku() throws IOException, ClassNotFoundException
-    {   //odczytanie spotkan z pliku
+    {   
         fileOut = new FileInputStream("listaSpotkan.dat");
         objectOut = new ObjectInputStream(fileOut);
         lista_spotkan = (ArrayList<Spotkanie>) objectOut.readObject();
         fileOut.close();
         objectOut.close();
     }
-
-    public void listaDoPliku() throws IOException
-    {   //zapis listy spotkan do pliku jako obiektu
+    //zapis listy spotkan do pliku jako obiektu
+    public void doPliku() throws IOException
+    {   
         fileIn = new FileOutputStream("listaSpotkan.dat");
         objectIn = new ObjectOutputStream(fileIn);
         objectIn.writeObject(lista_spotkan);
         fileIn.close();
         objectIn.close();
     }
-    
+    //wyswietlenie wszystkich spotkan
     public void wyswietl()
-    {   //wyswietlenie wszystkich spotkan
+    {   
         for(Spotkanie spotkanie : lista_spotkan)
         {
-            int i = 1;
-            System.out.print(i + ". Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
+            System.out.print(" Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
             spotkanie.getDruzyna2().getDruzyna() + "; " +
             "Sport: " + spotkanie.getSport() + "; " + 
             "Sedziowie: " + spotkanie.getSedzia1().getSedzia() + ", ");
@@ -61,8 +60,6 @@ public class TabelaWynikow implements Serializable
             }
             System.out.print("Zwyciezca: " + spotkanie.getZwyciezca());
             System.out.println();
-            ++i;
         }
     }
-
 }
