@@ -55,10 +55,10 @@ public class TabelaWynikow implements Serializable
     }
     //wyswietlenie wszystkich spotkan
     public void wyswietl()
-    {   
+    {   int i = 1;
         for(Spotkanie spotkanie : lista_spotkan)
         {
-            System.out.print(" Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
+            System.out.print(i + ". Druzyny: " + spotkanie.getDruzyna1().getDruzyna() + ", " +
             spotkanie.getDruzyna2().getDruzyna() + "; " +
             "Sport: " + spotkanie.getSport() + "; " + 
             "Sedziowie: " + spotkanie.getSedzia1().getSedzia() + ", ");
@@ -72,6 +72,7 @@ public class TabelaWynikow implements Serializable
             }
             System.out.print("Zwyciezca: " + spotkanie.getZwyciezca());
             System.out.println();
+            i = i + 1;
         }
     }
     //zwrocenie informacji czy lista spotkan jest pusta
