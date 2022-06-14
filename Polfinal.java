@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.lang.Math;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Polfinal {
     protected Druzyna[] tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
@@ -82,7 +81,7 @@ public class Polfinal {
     //symulacja rozgrywek w polfinale jako parametr przyjmujaca obiekt klasy ListaSedziow
     void Symuluj (ListaSedziow listaSedziow) throws IOException {
 
-        double symulacja = Math.random();
+        ThreadLocalRandom symulacja = ThreadLocalRandom.current();
         int zwyciezca, symSedzia;
         Sedzia sedzia, sedziaPomocniczy1, sedziaPomocniczy2;
         Spotkanie spotkanie;
@@ -104,8 +103,8 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-            zwyciezca = (int)symulacja*2;
-            symSedzia = (int)symulacja*listaSedziow.size();
+            zwyciezca = symulacja.nextInt(2);
+            symSedzia = symulacja.nextInt(listaSedziow.size());
             sedzia = listaSedziow.getSedzia(symSedzia);
 
             if (zwyciezca == 0)
@@ -135,8 +134,8 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-                zwyciezca = (int)symulacja*2;
-                symSedzia = (int)symulacja*listaSedziow.size();
+                zwyciezca = symulacja.nextInt(2);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedzia = listaSedziow.getSedzia(symSedzia);
 
                 if (zwyciezca == 0)
@@ -169,12 +168,12 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-                zwyciezca = (int)symulacja*2;
-                symSedzia = (int)symulacja*listaSedziow.size();
+              zwyciezca = symulacja.nextInt(2);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedzia = listaSedziow.getSedzia(symSedzia);
-                symSedzia = (int)symulacja*listaSedziow.size();
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedziaPomocniczy1 = listaSedziow.getSedzia(symSedzia);
-                symSedzia = (int)symulacja*listaSedziow.size();
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedziaPomocniczy2 = listaSedziow.getSedzia(symSedzia);
 
 
@@ -226,5 +225,23 @@ public class Polfinal {
     public Druzyna[] gettablicaDruzynPolfinaluPrzeciaganiaLiny ()
     {
         return this.tablicaDruzynPolfinaluPrzeciaganiaLiny;
+    }
+    public void tablicaDruzynPolfinaluSiatkowki()
+    {
+        for(int i = 0; i < tablicaDruzynPolfinaluSiatkowki.length; i++) {
+            System.out.println(tablicaDruzynPolfinaluSiatkowki[i].getDruzyna()); 
+        }
+    }
+    public void tablicaDruzynPolfinaluDwochOgni()
+    {
+        for(int i = 0; i < tablicaDruzynPolfinaluDwochOgni.length; i++) {
+            System.out.println(tablicaDruzynPolfinaluDwochOgni[i].getDruzyna()); 
+        }
+    }
+    public void tablicaDruzynPolfinaluPrzeciaganiaLiny()
+    {
+        for(int i = 0; i < tablicaDruzynPolfinaluPrzeciaganiaLiny.length; i++) {
+            System.out.println(tablicaDruzynPolfinaluPrzeciaganiaLiny[i].getDruzyna()); 
+        }
     }
 }

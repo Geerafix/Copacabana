@@ -27,7 +27,7 @@ public class TabelaWynikow implements Serializable
     //usuniecie spotkania o podanym indeksie
     public void usunSpotkanie(int index) throws IOException
     {
-        fileIn = new FileOutputStream("listaDruzyn.dat");
+        fileIn = new FileOutputStream("listaSpotkan.dat");
         objectIn = new ObjectOutputStream(fileIn);
         lista_spotkan.remove((index) - 1);
     //wpisanie do pliku listy zmodyfikowanej jako obiekt

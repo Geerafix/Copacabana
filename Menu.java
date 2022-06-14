@@ -12,6 +12,8 @@ public class Menu
         int i = 1;
 
         ldr.zPliku();
+        Final fin = new Final(ldr);
+        Polfinal plfin = new Polfinal(ldr);
         lse.zPliku();
         tabw.zPliku();
         ldr.pomoc();
@@ -218,6 +220,36 @@ public class Menu
                     ldr.zeruj();
                     ldr.pomoc();
                     ldr.doPliku();
+                    break;
+                }
+                case "q" :
+                {
+                    i=5;
+                    fin.Symuluj(lse);
+                    System.out.println("Druzyny finalu siatkowki: ");
+                    fin.tablicaDruzynFinaluSiatkowki();
+                    System.out.println("Druzyny polfinalu siatkowki: ");
+                    plfin.tablicaDruzynPolfinaluSiatkowki();
+                    break;
+                }
+                case "w" :
+                {
+                    i=5;
+                    fin.Symuluj(lse);
+                    System.out.println("Druzyny finalu dwoch ogni: ");
+                    fin.tablicaDruzynFinaluDwochOgni();
+                    System.out.println("Druzyny polfinalu dwoch ogni: ");
+                    plfin.tablicaDruzynPolfinaluDwochOgni();
+                    break;
+                }
+                case "e" :
+                {
+                    i=5;
+                    fin.Symuluj(lse);
+                    System.out.println("Druzyny polfinalu przeciagania liny: ");
+                    fin.tablicaDruzynFinaluPrzeciaganiaLiny();
+                    System.out.println("Druzyny polfinalu przeciagania liny: ");
+                    plfin.tablicaDruzynPolfinaluPrzeciaganiaLiny();
                     break;
                 }
                 case "end" :
