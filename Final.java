@@ -18,37 +18,45 @@ public class Final extends Polfinal {
     Final (ListaDruzyn listaDruzyn)
     {
         super(listaDruzyn);
-        int miejsceTablicy = 0;
+
+        int wyniki[] = new int[] {0, 0};
 
         for (int i=0; i<4; i++)
         {
-            // problem gdy wynik jest 0 2 2 2 dla druzyn, druga druzyna z 2 punktami zostanie pominieta
-            if (wynikiPolfinaluDwochOgni[i] >= 2) 
+            for(int j=0; j<2; j++)
             {
-                this.tablicaDruzynFinaluDwochOgni[miejsceTablicy] = this.tablicaDruzynPolfinaluDwochOgni [i];
-                miejsceTablicy = 1;
+                if (wynikiPolfinaluDwochOgni[i] > wyniki[j])
+                {
+                    wyniki[j] = wynikiPolfinaluDwochOgni[i];
+                    this.tablicaDruzynFinaluDwochOgni[j] = this.tablicaDruzynPolfinaluDwochOgni[i];
+                    break;
+                }
             }
         }
 
-        miejsceTablicy = 0;
-
         for (int i=0; i<4; i++)
         {
-            if (wynikiPolfinaluSiatkowki[i] >= 2) 
+            for(int j=0; j<2; j++)
             {
-                this.tablicaDruzynFinaluSiatkowki[miejsceTablicy] = this.tablicaDruzynPolfinaluSiatkowki [i];
-                miejsceTablicy = 1;
+                if (wynikiPolfinaluSiatkowki[i] > wyniki[j])
+                {
+                    wyniki[j] = wynikiPolfinaluSiatkowki[i];
+                    this.tablicaDruzynFinaluSiatkowki[j] = this.tablicaDruzynPolfinaluSiatkowki[i];
+                    break;
+                }
             }
         }
-        
-        miejsceTablicy = 0;
 
         for (int i=0; i<4; i++)
         {
-            if (wynikiPolfinaluPrzeciaganiaLiny[i] >= 2)
+            for(int j=0; j<2; j++)
             {
-                this.tablicaDruzynFinaluPrzeciaganiaLiny[miejsceTablicy] = this.tablicaDruzynPolfinaluPrzeciaganiaLiny [i];
-                miejsceTablicy = 1;
+                if (wynikiPolfinaluPrzeciaganiaLiny[i] > wyniki[j])
+                {
+                    wyniki[j] = wynikiPolfinaluPrzeciaganiaLiny[i];
+                    this.tablicaDruzynFinaluPrzeciaganiaLiny[j] = this.tablicaDruzynPolfinaluPrzeciaganiaLiny[i];
+                    break;
+                }
             }
         }
     }
@@ -83,7 +91,7 @@ public class Final extends Polfinal {
             for(int j=i+1; j<2; j++)
             {
             zwyciezca = symulacja.nextInt(2);
-            symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+            symSedzia = symulacja.nextInt(listaSedziow.size());
             sedzia = listaSedziow.getSedzia(symSedzia);
 
             if (zwyciezca == 0)
@@ -114,7 +122,7 @@ public class Final extends Polfinal {
             for(int j=i+1; j<2; j++)
             {
                 zwyciezca = symulacja.nextInt(2);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedzia = listaSedziow.getSedzia(symSedzia);
 
                 if (zwyciezca == 0)
@@ -148,11 +156,11 @@ public class Final extends Polfinal {
             for(int j=i+1; j<2; j++)
             {
               zwyciezca = symulacja.nextInt(2);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedzia = listaSedziow.getSedzia(symSedzia);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedziaPomocniczy1 = listaSedziow.getSedzia(symSedzia);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = symulacja.nextInt(listaSedziow.size());
                 sedziaPomocniczy2 = listaSedziow.getSedzia(symSedzia);
 
 
