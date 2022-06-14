@@ -31,7 +31,7 @@ public class Polfinal {
                 if (wynikDruzyny > wyniki[j])
                 {
                     wyniki[j] = wynikDruzyny;
-                    tablicaDruzynPolfinaluSiatkowki[j] = pobranaDruzyna;
+                    this.tablicaDruzynPolfinaluSiatkowki[j] = pobranaDruzyna;
                     break;
                 }
             }
@@ -52,7 +52,7 @@ public class Polfinal {
                 if (wynikDruzyny > wyniki[j])
                 {
                     wyniki[j] = wynikDruzyny;
-                    tablicaDruzynPolfinaluPrzeciaganiaLiny[j] = pobranaDruzyna;
+                    this.tablicaDruzynPolfinaluPrzeciaganiaLiny[j] = pobranaDruzyna;
                     break;
                 }
             }
@@ -72,7 +72,7 @@ public class Polfinal {
                 if (wynikDruzyny > wyniki[j])
                 {
                     wyniki[j] = wynikDruzyny;
-                    tablicaDruzynPolfinaluDwochOgni[j] = pobranaDruzyna;
+                    this.tablicaDruzynPolfinaluDwochOgni[j] = pobranaDruzyna;
                     break;
                 }
             }
@@ -207,20 +207,24 @@ public class Polfinal {
             
         }
     }
+    // get zwraca spotkania polfinalu typu TabelaWynikow
     public TabelaWynikow getspotkaniaPolfinalu ()
     {
         return this.spotkaniaPolfinalu;
     }
+    // get zwraca tablice druzyn, ktore zakwalifikowaly sie do polfinalu siatkowki
     public Druzyna[] gettablicaDruzynPolfinaluSiatkowki ()
     {
-        return tablicaDruzynPolfinaluSiatkowki;
+        return this.tablicaDruzynPolfinaluSiatkowki;
     }
+      // get zwraca tablice druzyn, ktore zakwalifikowaly sie do polfinalu dwoch ogni
     public Druzyna[] gettablicaDruzynPolfinaluDwochOgni ()
     {
-        return tablicaDruzynPolfinaluDwochOgni;
+        return this.tablicaDruzynPolfinaluDwochOgni;
     }
+      // get zwraca tablice druzyn, ktore zakwalifikowaly sie do polfinalu przeciagania liny
     public Druzyna[] gettablicaDruzynPolfinaluPrzeciaganiaLiny ()
     {
-        return tablicaDruzynPolfinaluPrzeciaganiaLiny;
+        return this.tablicaDruzynPolfinaluPrzeciaganiaLiny;
     }
 }

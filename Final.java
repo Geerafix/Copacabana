@@ -25,7 +25,7 @@ public class Final extends Polfinal {
             // problem gdy wynik jest 0 2 2 2 dla druzyn, druga druzyna z 2 punktami zostanie pominieta
             if (wynikiPolfinaluDwochOgni[i] >= 2) 
             {
-                tablicaDruzynFinaluDwochOgni[miejsceTablicy] = tablicaDruzynPolfinaluDwochOgni [i];
+                this.tablicaDruzynFinaluDwochOgni[miejsceTablicy] = this.tablicaDruzynPolfinaluDwochOgni [i];
                 miejsceTablicy = 1;
             }
         }
@@ -36,7 +36,7 @@ public class Final extends Polfinal {
         {
             if (wynikiPolfinaluSiatkowki[i] >= 2) 
             {
-                tablicaDruzynFinaluSiatkowki[miejsceTablicy] = tablicaDruzynPolfinaluSiatkowki [i];
+                this.tablicaDruzynFinaluSiatkowki[miejsceTablicy] = this.tablicaDruzynPolfinaluSiatkowki [i];
                 miejsceTablicy = 1;
             }
         }
@@ -47,14 +47,14 @@ public class Final extends Polfinal {
         {
             if (wynikiPolfinaluPrzeciaganiaLiny[i] >= 2)
             {
-                tablicaDruzynFinaluPrzeciaganiaLiny[miejsceTablicy] = tablicaDruzynPolfinaluPrzeciaganiaLiny [i];
+                this.tablicaDruzynFinaluPrzeciaganiaLiny[miejsceTablicy] = this.tablicaDruzynPolfinaluPrzeciaganiaLiny [i];
                 miejsceTablicy = 1;
             }
         }
     }
     /*
     symulacja rozgrywek w finale jako parametr przyjmujaca obiekt klasy ListaSedziow
-    ktora wykorzystuje do symulacji polfinalu (w klasie bazowej) oraz do symulacji finalu
+    ktora jest wykorzystywana do symulacji polfinalu (w klasie bazowej) oraz do symulacji finalu
     */
 
     void Symuluj (ListaSedziow listaSedziow) throws IOException {
@@ -185,20 +185,24 @@ public class Final extends Polfinal {
             
         }
     }
+    // get zwraca spotkania finalu typu TabelaWynikow
     public TabelaWynikow getspotkaniaFinalu ()
     {
         return this.spotkaniaFinalu;
     }
+      // get zwraca tablice druzyn, ktore zakwalifikowaly sie do finalu siatkowki
     public Druzyna[] gettablicaDruzynFinaluSiatkowki ()
     {
-        return tablicaDruzynFinaluSiatkowki;
+        return this.tablicaDruzynFinaluSiatkowki;
     }
+      // get zwraca tablice druzyn, ktore zakwalifikowaly sie do finalu dwoch ogni
     public Druzyna[] gettablicaDruzynFinaluDwochOgni ()
     {
-        return tablicaDruzynFinaluDwochOgni;
+        return this.tablicaDruzynFinaluDwochOgni;
     }
+      // get zwraca tablice druzyn, ktore zakwalifikowaly sie do finalu przeciagania liny
     public Druzyna[] gettablicaDruzynFinaluPrzeciaganiaLiny ()
     {
-        return tablicaDruzynFinaluPrzeciaganiaLiny;
+        return this.tablicaDruzynFinaluPrzeciaganiaLiny;
     }
 }
