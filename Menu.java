@@ -213,7 +213,7 @@ public class Menu
                     ldr.wyswietlWyniki(input.next());
                     break;
                 }
-                case "zeruj" :
+                case "clear" :
                 {
                     ldr.zeruj();
                     ldr.pomoc();
