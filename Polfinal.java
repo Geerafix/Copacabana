@@ -1,16 +1,17 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Polfinal {
-    public  Druzyna[] tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
-    public  Druzyna[] tablicaDruzynPolfinaluDwochOgni = new Druzyna [4];
-    public  Druzyna[] tablicaDruzynPolfinaluPrzeciaganiaLiny = new Druzyna [4];
+    protected Druzyna[] tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
+    protected  Druzyna[] tablicaDruzynPolfinaluDwochOgni = new Druzyna [4];
+    protected Druzyna[] tablicaDruzynPolfinaluPrzeciaganiaLiny = new Druzyna [4];
 
-    public TabelaWynikow spotkaniaPolfinalu = new TabelaWynikow ();
+    private TabelaWynikow spotkaniaPolfinalu = new TabelaWynikow ();
 
-    public int[] wynikiPolfinaluSiatkowki = new int [4];
-    public int[] wynikiPolfinaluDwochOgni = new int [4];
-    public int[] wynikiPolfinaluPrzeciaganiaLiny = new int [4];
+    protected int[] wynikiPolfinaluSiatkowki = new int [4];
+    protected int[] wynikiPolfinaluDwochOgni = new int [4];
+    protected int[] wynikiPolfinaluPrzeciaganiaLiny = new int [4];
 
     //konstruktor, parametrem jest obiekt klasy ListaDruzyn
     Polfinal (ListaDruzyn listaDruzyn)
@@ -79,7 +80,7 @@ public class Polfinal {
 
     }
     //symulacja rozgrywek w polfinale jako parametr przyjmujaca obiekt klasy ListaSedziow
-    void Symuluj (ListaSedziow listaSedziow) {
+    void Symuluj (ListaSedziow listaSedziow) throws IOException {
 
         Random symulacja = new Random();
         int zwyciezca, symSedzia;
@@ -112,7 +113,7 @@ public class Polfinal {
                     wynikiPolfinaluDwochOgni[i]++;
                     spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
                      tablicaDruzynPolfinaluDwochOgni[j],
-                     "przeciaganie_liny",
+                     "dwa_ognie",
                       sedzia,
                        tablicaDruzynPolfinaluDwochOgni[i].getDruzyna() );
                 }
@@ -121,7 +122,7 @@ public class Polfinal {
                     wynikiPolfinaluDwochOgni[j]++;
                     spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
                      tablicaDruzynPolfinaluDwochOgni[j],
-                     "przeciaganie_liny",
+                     "dwa_ognie",
                       sedzia,
                        tablicaDruzynPolfinaluDwochOgni[j].getDruzyna() );
                 }
@@ -205,5 +206,21 @@ public class Polfinal {
             }
             
         }
+    }
+    public TabelaWynikow getspotkaniaPolfinalu ()
+    {
+        return this.spotkaniaPolfinalu;
+    }
+    public Druzyna[] gettablicaDruzynPolfinaluSiatkowki ()
+    {
+        return tablicaDruzynPolfinaluSiatkowki;
+    }
+    public Druzyna[] gettablicaDruzynPolfinaluDwochOgni ()
+    {
+        return tablicaDruzynPolfinaluDwochOgni;
+    }
+    public Druzyna[] gettablicaDruzynPolfinaluPrzeciaganiaLiny ()
+    {
+        return tablicaDruzynPolfinaluPrzeciaganiaLiny;
     }
 }
