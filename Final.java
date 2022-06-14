@@ -65,22 +65,22 @@ public class Final extends Polfinal {
         Sedzia sedzia, sedziaPomocniczy1, sedziaPomocniczy2;
         Spotkanie spotkanie;
 
-        for(int i=0; i<4; i++)
+        for(int i=0; i<2; i++)
         {
-            wynikiPolfinaluDwochOgni[i] = 0;
+            wynikFinaluDwochOgni[i] = 0;
         }
-        for(int i=0; i<4; i++)
+        for(int i=0; i<2; i++)
         {
-            wynikiPolfinaluSiatkowki[i] = 0;
+            wynikFinaluSiatkowki[i] = 0;
         }
-        for(int i=0; i<4; i++)
+        for(int i=0; i<2; i++)
         {
-            wynikiPolfinaluPrzeciaganiaLiny[i] = 0;
+            wynikFinaluPrzeciaganiaLiny[i] = 0;
         }
 
-        for (int i=0; i<3; i++)
+        for (int i=0; i<1; i++)
         {
-            for(int j=i+1; j<4; j++)
+            for(int j=i+1; j<2; j++)
             {
             zwyciezca = symulacja.nextInt(2);
             symSedzia = symulacja.nextInt(listaSedziow.size()+1);
@@ -89,20 +89,20 @@ public class Final extends Polfinal {
             if (zwyciezca == 0)
                 {
                     wynikiPolfinaluDwochOgni[i]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
-                     tablicaDruzynPolfinaluDwochOgni[j],
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluDwochOgni[i],
+                     tablicaDruzynFinaluDwochOgni[j],
                      "dwa_ognie",
                       sedzia,
-                       tablicaDruzynPolfinaluDwochOgni[i].getDruzyna() );
+                       tablicaDruzynFinaluDwochOgni[i].getDruzyna() );
                 }
                 else 
                 {
                     wynikiPolfinaluDwochOgni[j]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
-                     tablicaDruzynPolfinaluDwochOgni[j],
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluDwochOgni[i],
+                     tablicaDruzynFinaluDwochOgni[j],
                      "dwa_ognie",
                       sedzia,
-                       tablicaDruzynPolfinaluDwochOgni[j].getDruzyna() );
+                       tablicaDruzynFinaluDwochOgni[j].getDruzyna() );
                 }
 
             spotkaniaFinalu.dodajSpotkanie(spotkanie);
@@ -119,21 +119,21 @@ public class Final extends Polfinal {
 
                 if (zwyciezca == 0)
                 {
-                    wynikiPolfinaluPrzeciaganiaLiny[i]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluPrzeciaganiaLiny[i],
-                     tablicaDruzynPolfinaluPrzeciaganiaLiny[j],
+                    wynikFinaluPrzeciaganiaLiny[i]++;
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluPrzeciaganiaLiny[i],
+                     tablicaDruzynFinaluPrzeciaganiaLiny[j],
                      "przeciaganie_liny",
                       sedzia,
-                       tablicaDruzynPolfinaluPrzeciaganiaLiny[i].getDruzyna() );
+                       tablicaDruzynFinaluPrzeciaganiaLiny[i].getDruzyna() );
                 }
                 else 
                 {
-                    wynikiPolfinaluPrzeciaganiaLiny[j]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluPrzeciaganiaLiny[i],
-                     tablicaDruzynPolfinaluPrzeciaganiaLiny[j],
+                    wynikFinaluPrzeciaganiaLiny[j]++;
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluPrzeciaganiaLiny[i],
+                     tablicaDruzynFinaluPrzeciaganiaLiny[j],
                      "przeciaganie_liny",
                       sedzia,
-                       tablicaDruzynPolfinaluPrzeciaganiaLiny[j].getDruzyna() );
+                       tablicaDruzynFinaluPrzeciaganiaLiny[j].getDruzyna() );
                 }
 
                 
@@ -143,9 +143,9 @@ public class Final extends Polfinal {
             }
         }
 
-        for (int i=0; i<3; i++)
+        for (int i=0; i<1; i++)
         {
-            for(int j=i+1; j<4; j++)
+            for(int j=i+1; j<2; j++)
             {
               zwyciezca = symulacja.nextInt(2);
                 symSedzia = symulacja.nextInt(listaSedziow.size()+1);
@@ -159,24 +159,24 @@ public class Final extends Polfinal {
                 if(zwyciezca == 0)
                 {
                     wynikiPolfinaluSiatkowki[i]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluSiatkowki[i],
-                     tablicaDruzynPolfinaluSiatkowki[j],
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluSiatkowki[i],
+                     tablicaDruzynFinaluSiatkowki[j],
                       sedzia,
                        sedziaPomocniczy1,
                         sedziaPomocniczy2,
                         "siatkowka",
-                         tablicaDruzynPolfinaluSiatkowki[i].getDruzyna() );
+                         tablicaDruzynFinaluSiatkowki[i].getDruzyna() );
                 }
                 else
                 {
                     wynikiPolfinaluSiatkowki[j]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluSiatkowki[i],
-                     tablicaDruzynPolfinaluSiatkowki[j],
+                    spotkanie = new Spotkanie(tablicaDruzynFinaluSiatkowki[i],
+                     tablicaDruzynFinaluSiatkowki[j],
                       sedzia,
                        sedziaPomocniczy1,
                         sedziaPomocniczy2,
                         "siatkowka",
-                         tablicaDruzynPolfinaluSiatkowki[j].getDruzyna() );
+                         tablicaDruzynFinaluSiatkowki[j].getDruzyna() );
                 }
                
 
