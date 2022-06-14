@@ -126,9 +126,17 @@ public class ListaDruzyn implements Serializable
         return lista_druzyn;
     }
     //sprawdzenie czy lista zawiera dana druzyne
-    public boolean czyZawiera(String nazwa_druzyny)
+    public void czyZawiera(String nazwa_druzyny) throws BrakDruzyny
     {
-        return lista_pomocnicza.contains(nazwa_druzyny);
+        try{
+            if(lista_pomocnicza.contains(nazwa_druzyny))
+            {}
+            else
+            throw new BrakDruzyny("Brak druzyny na liscie: " + nazwa_druzyny);
+        }   catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     //zwrocenie druzyny z listy po wpisaniu indeksu
     public Druzyna getDruzyna(int indeks)

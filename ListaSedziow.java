@@ -97,9 +97,17 @@ public class ListaSedziow implements Serializable
         return lista_sedziow;
     }
     //sprawdzenie czy lista zawiera danego sedziego
-    public boolean czyZawiera(String imie_nazwisko)
+    public void czyZawiera(String imie_nazwisko) throws BrakSedziego
     {
-        return lista_pomocnicza.contains(imie_nazwisko);
+        try{
+            if(lista_pomocnicza.contains(imie_nazwisko))
+            {}
+        else
+        throw new BrakSedziego("Brak druzyny na liscie: " + imie_nazwisko);
+        }   catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     //zwraca liczbe sedziow
     public int size() {
