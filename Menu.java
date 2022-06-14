@@ -40,6 +40,7 @@ public class Menu
                 System.out.print("\n'addteams' - Dodawanie druzyn\n"
                 +"'delteams' - Usuwanie druzyn\n"
                 +"'score' - Wyniki druzyn w zawodach\n"
+                +"'clear' - Zerowanie wszystkich wynikow wszystkich druzyn\n"
                 +"'back' - Powrot do wszystkich opcji\n"
                 +"> ");
             }
@@ -115,9 +116,11 @@ public class Menu
                     Sedzia pom2 = new Sedzia(input.next());
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
                     String zwyciezca = input.next();
-                    Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "siatkowka", zwyciezca);
+                    Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "Siatkowka", zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "siatkowka");
+                    tabw.doPliku();
+                    ldr.doPliku();
                     break;
                 }
                 case "fire" :
@@ -130,9 +133,11 @@ public class Menu
                     Sedzia sedzia = new Sedzia(input.next());
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
                     String zwyciezca = input.next();
-                    DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "dwaOgnie", sedzia, zwyciezca);
+                    DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "Dwa ognie", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "dwaOgnie");
+                    tabw.doPliku();
+                    ldr.doPliku();
                     break;
                 }
                 case "line" :
@@ -145,9 +150,11 @@ public class Menu
                     Sedzia sedzia = new Sedzia(input.next());
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
                     String zwyciezca = input.next();
-                    PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "przeciaganieLiny", sedzia, zwyciezca);
+                    PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "Przeciaganie liny", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "przeciaganieLiny");
+                    tabw.doPliku();
+                    ldr.doPliku();
                     break;
                 }
                 case "addteams" :
@@ -194,6 +201,8 @@ public class Menu
                         System.out.print("Prosze podac indeks spotkania do usuniecia"+"\n> ");
                         tabw.usunSpotkanie(input.nextInt());
                         tabw.doPliku();
+                        ldr.pomoc();
+                        ldr.doPliku();
                     }
                     break;
                 }
@@ -202,6 +211,13 @@ public class Menu
                     i=5;
                     System.out.print("Prosze podac nazwe druzyny ktorej wyniki ma przedstawic system"+"\n> ");
                     ldr.wyswietlWyniki(input.next());
+                    break;
+                }
+                case "zeruj" :
+                {
+                    ldr.zeruj();
+                    ldr.pomoc();
+                    ldr.doPliku();
                     break;
                 }
                 case "end" :

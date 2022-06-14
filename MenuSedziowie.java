@@ -188,7 +188,9 @@ class MenuUsuwanieS extends JFrame implements ActionListener
             NowySedzia = tSedzia.getText();
             ListaSedziow lse = new ListaSedziow();
             try {lse.zPliku();} catch (ClassNotFoundException | IOException e1) {e1.printStackTrace();}
-            try {lse.usunSedziego(NowySedzia);} catch (IOException e1) {e1.printStackTrace();}
+            try {lse.usunSedziego(NowySedzia);} catch (IOException e1) {e1.printStackTrace();} catch (BrakSedziego e1) {
+                e1.printStackTrace();
+            }
             
             dispose();
             MenuSedziowie okno = new MenuSedziowie();

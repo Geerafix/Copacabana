@@ -147,4 +147,14 @@ public class ListaDruzyn implements Serializable
     public int size() {
         return lista_druzyn.size();
     }
+    //zerowanie wszystkich wynikow wszystkich druzyn
+    public void zeruj()
+    {
+        lista_druzyn = new ArrayList<>();
+        for(String string : lista_pomocnicza)
+        {
+            Druzyna dr = new Druzyna(string);
+            lista_druzyn.add(dr);
+        }
+    }
 }
