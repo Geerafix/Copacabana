@@ -61,9 +61,10 @@ public class Menu
                 System.out.print("--Wszystkie Spotkania--\n");
                 tabw.wyswietl();
                 System.out.print("\n'ball' - Tworzenie nowego meczu siatkowki"
-                +"\n'fire' - Tworzenie nowego meczu dwóch ogni"
+                +"\n'fire' - Tworzenie nowego meczu dwoch ogni"
                 +"\n'line' - Tworzenie nowego meczu przeciagania liny"
                 +"\n'sim' - Przeprowadzanie symulacji polfinalu i finalu dla aktualnego stanu listy druzyn"
+                +"\n'delmatches' - Usuwanie spotkania o podanym indeksie"
                 +"\n'back' - Powrot do wszystkich opcji"
                 +"\n> ");
             }
@@ -179,6 +180,21 @@ public class Menu
                     lse.usunSedziego(input.next());
                     lse.pomoc();
                     lse.doPliku();
+                    break;
+                }
+                case "delmatches" :
+                {
+                    if(tabw.czyPusta() == true)
+                    {
+                        i=5;
+                        System.out.println("Lista spotkan jest pusta");
+                    }
+                    else
+                    {
+                        System.out.print("Prosze podac indeks spotkania do usuniecia"+"\n> ");
+                        tabw.usunSpotkanie(input.nextInt());
+                        tabw.doPliku();
+                    }
                     break;
                 }
                 case "score" :

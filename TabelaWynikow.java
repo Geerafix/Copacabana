@@ -1,4 +1,5 @@
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,6 +23,17 @@ public class TabelaWynikow implements Serializable
     public void dodajSpotkanie(Spotkanie spotkanie) throws IOException
     {  
         lista_spotkan.add(spotkanie);   
+    }
+    //usuniecie spotkania o podanym indeksie
+    public void usunSpotkanie(int index) throws IOException
+    {
+        fileIn = new FileOutputStream("listaDruzyn.dat");
+        objectIn = new ObjectOutputStream(fileIn);
+        lista_spotkan.remove((index) - 1);
+    //wpisanie do pliku listy zmodyfikowanej jako obiekt
+        objectIn.writeObject(lista_spotkan);
+        fileIn.close();
+        objectIn.close();
     }
     //odczytanie spotkan z pliku
     public void zPliku() throws IOException, ClassNotFoundException
@@ -61,5 +73,10 @@ public class TabelaWynikow implements Serializable
             System.out.print("Zwyciezca: " + spotkanie.getZwyciezca());
             System.out.println();
         }
+    }
+    //zwrocenie informacji czy lista spotkan jest pusta
+    public boolean czyPusta()
+    {
+        return lista_spotkan.isEmpty();
     }
 }
