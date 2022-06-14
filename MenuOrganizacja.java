@@ -13,19 +13,19 @@ public class MenuOrganizacja extends JFrame implements ActionListener
         setTitle("Menu Organizacja");
         setLayout(null);
 
-        lSciezka = new JLabel("Organizacja Spotkań");
+        lSciezka = new JLabel("Organizacja Spotkan");
         lSciezka.setBounds(163,0,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lWybierz = new JLabel("Proszę wybrać dyscyplinę nowego spotkania");
+        lWybierz = new JLabel("Proszę wybrac dyscypline nowego spotkania");
         lWybierz.setBounds(88,120,350,20);
         lWybierz.setForeground(Color.BLACK);
         lWybierz.setFont(new Font("SansSerif", Font.BOLD, 13));
         add(lWybierz);
 
-        BSiatkowka = new JButton("Siatkówka");
+        BSiatkowka = new JButton("Siatkowka");
         BSiatkowka.setBounds(110,155,250,20);
         add(BSiatkowka);
         BSiatkowka.addActionListener(this);
@@ -35,12 +35,12 @@ public class MenuOrganizacja extends JFrame implements ActionListener
         add(BDwaOgnie);
         BDwaOgnie.addActionListener(this);
 
-        bPrzeciaganie = new JButton("Przeciąganie Liny");
+        bPrzeciaganie = new JButton("Przeciaganie Liny");
         bPrzeciaganie.setBounds(110,225,250,20);
         add(bPrzeciaganie);
         bPrzeciaganie.addActionListener(this);
 
-        lSymuluj = new JLabel("Przeprowadzanie symulacji finałów dla obecnego stanu spotkań");
+        lSymuluj = new JLabel("Przeprowadzanie symulacji finalow dla obecnego stanu spotkan");
         lSymuluj.setBounds(35,260,450,20);
         lSymuluj.setForeground(Color.BLACK);
         lSymuluj.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -51,7 +51,7 @@ public class MenuOrganizacja extends JFrame implements ActionListener
         add(bSymulacja);
         bSymulacja.addActionListener(this);
 
-        bPowrot = new JButton("Powrót do Menu Głównego");
+        bPowrot = new JButton("Powrot do Menu Głównego");
         bPowrot.setBounds(110,330,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -104,19 +104,19 @@ class MenuSiatkowka extends JFrame implements ActionListener
         setTitle("Menu Siatkowka");
         setLayout(null);
 
-        lSciezka = new JLabel("Nowe spotkanie: Siatkówka");
+        lSciezka = new JLabel("Nowe spotkanie: Siatkowka");
         lSciezka.setBounds(140,0,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lDane = new JLabel("Proszę wpisać dane nowego spotkania");
+        lDane = new JLabel("Proszę wpisac dane nowego spotkania");
         lDane.setBounds(110,120,350,20);
         lDane.setForeground(Color.BLACK);
         lDane.setFont(new Font("SansSerif", Font.BOLD, 13));
         add(lDane);
 
-        lDruzyna1 = new JLabel("Nazwa pierwszej drużyny");
+        lDruzyna1 = new JLabel("Nazwa pierwszej druzyny");
         lDruzyna1.setBounds(155,145,350,20);
         lDruzyna1.setForeground(Color.BLACK);
         lDruzyna1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -126,7 +126,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,170,130,20);
         add(tDruzyna1);
 
-        lDruzyna2 = new JLabel("Nazwa drugiej drużyny");
+        lDruzyna2 = new JLabel("Nazwa drugiej druzyny");
         lDruzyna2.setBounds(160,195,350,20);
         lDruzyna2.setForeground(Color.BLACK);
         lDruzyna2.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -136,7 +136,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,220,130,20);
         add(tDruzyna1);
 
-        lSedzia1 = new JLabel("Imię głównego sędziego");
+        lSedzia1 = new JLabel("Imie glownego sedziego");
         lSedzia1.setBounds(160,245,350,20);
         lSedzia1.setForeground(Color.BLACK);
         lSedzia1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -146,7 +146,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         tSedzia1.setBounds(173,270,130,20);
         add(tSedzia1);
 
-        lSedziaPom1 = new JLabel("Imię pierwszego sędziego pomocniczego");
+        lSedziaPom1 = new JLabel("Imie pierwszego sedziego pomocniczego");
         lSedziaPom1.setBounds(110,295,350,20);
         lSedziaPom1.setForeground(Color.BLACK);
         lSedziaPom1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -156,7 +156,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         tSedziaPom1.setBounds(173,320,130,20);
         add(tSedziaPom1);
 
-        lSedziaPom2 = new JLabel("Imię drugiego sędziego pomocniczego");
+        lSedziaPom2 = new JLabel("Imie drugiego sedziego pomocniczego");
         lSedziaPom2.setBounds(120,345,350,20);
         lSedziaPom2.setForeground(Color.BLACK);
         lSedziaPom2.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -166,7 +166,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         tSedziaPom2.setBounds(173,370,130,20);
         add(tSedziaPom2);
 
-        lZwyciezca = new JLabel("Zwycięska drużyna spotkania");
+        lZwyciezca = new JLabel("Zwycieska druzyna spotkania");
         lZwyciezca.setBounds(140,395,350,20);
         lZwyciezca.setForeground(Color.BLACK);
         lZwyciezca.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -181,7 +181,7 @@ class MenuSiatkowka extends JFrame implements ActionListener
         add(bDodaj);
         bDodaj.addActionListener(this);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,490,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -219,13 +219,13 @@ class MenuDwaOgnie extends JFrame implements ActionListener
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lDane = new JLabel("Proszę wpisać dane nowego spotkania");
+        lDane = new JLabel("Prosze wpisac dane nowego spotkania");
         lDane.setBounds(110,120,350,20);
         lDane.setForeground(Color.BLACK);
         lDane.setFont(new Font("SansSerif", Font.BOLD, 13));
         add(lDane);
 
-        lDruzyna1 = new JLabel("Nazwa pierwszej drużyny");
+        lDruzyna1 = new JLabel("Nazwa pierwszej druzyny");
         lDruzyna1.setBounds(155,145,350,20);
         lDruzyna1.setForeground(Color.BLACK);
         lDruzyna1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -235,7 +235,7 @@ class MenuDwaOgnie extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,170,130,20);
         add(tDruzyna1);
 
-        lDruzyna2 = new JLabel("Nazwa drugiej drużyny");
+        lDruzyna2 = new JLabel("Nazwa drugiej druzyny");
         lDruzyna2.setBounds(160,195,350,20);
         lDruzyna2.setForeground(Color.BLACK);
         lDruzyna2.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -245,7 +245,7 @@ class MenuDwaOgnie extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,220,130,20);
         add(tDruzyna1);
 
-        lSedzia1 = new JLabel("Imię sędziego");
+        lSedzia1 = new JLabel("Imie sedziego");
         lSedzia1.setBounds(180,245,350,20);
         lSedzia1.setForeground(Color.BLACK);
         lSedzia1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -255,7 +255,7 @@ class MenuDwaOgnie extends JFrame implements ActionListener
         tSedzia1.setBounds(173,270,130,20);
         add(tSedzia1);
 
-        lZwyciezca = new JLabel("Zwycięska drużyna spotkania");
+        lZwyciezca = new JLabel("Zwycieska druzyna spotkania");
         lZwyciezca.setBounds(140,295,350,20);
         lZwyciezca.setForeground(Color.BLACK);
         lZwyciezca.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -270,7 +270,7 @@ class MenuDwaOgnie extends JFrame implements ActionListener
         add(bDodaj);
         bDodaj.addActionListener(this);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,390,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -301,19 +301,19 @@ class MenuPrzeciaganie extends JFrame implements ActionListener
         setTitle("Menu Przeciaganie");
         setLayout(null);
 
-        lSciezka = new JLabel("Nowe spotkanie: Przeciąganie Liny");
+        lSciezka = new JLabel("Nowe spotkanie: Przeciaganie Liny");
         lSciezka.setBounds(120,0,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lDane = new JLabel("Proszę wpisać dane nowego spotkania");
+        lDane = new JLabel("Prosze wpisac dane nowego spotkania");
         lDane.setBounds(110,120,350,20);
         lDane.setForeground(Color.BLACK);
         lDane.setFont(new Font("SansSerif", Font.BOLD, 13));
         add(lDane);
 
-        lDruzyna1 = new JLabel("Nazwa pierwszej drużyny");
+        lDruzyna1 = new JLabel("Nazwa pierwszej druzyny");
         lDruzyna1.setBounds(155,145,350,20);
         lDruzyna1.setForeground(Color.BLACK);
         lDruzyna1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -323,7 +323,7 @@ class MenuPrzeciaganie extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,170,130,20);
         add(tDruzyna1);
 
-        lDruzyna2 = new JLabel("Nazwa drugiej drużyny");
+        lDruzyna2 = new JLabel("Nazwa drugiej druzyny");
         lDruzyna2.setBounds(160,195,350,20);
         lDruzyna2.setForeground(Color.BLACK);
         lDruzyna2.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -333,7 +333,7 @@ class MenuPrzeciaganie extends JFrame implements ActionListener
         tDruzyna1.setBounds(173,220,130,20);
         add(tDruzyna1);
 
-        lSedzia1 = new JLabel("Imię sędziego");
+        lSedzia1 = new JLabel("Imie sedziego");
         lSedzia1.setBounds(180,245,350,20);
         lSedzia1.setForeground(Color.BLACK);
         lSedzia1.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -343,7 +343,7 @@ class MenuPrzeciaganie extends JFrame implements ActionListener
         tSedzia1.setBounds(173,270,130,20);
         add(tSedzia1);
 
-        lZwyciezca = new JLabel("Zwycięska drużyna spotkania");
+        lZwyciezca = new JLabel("Zwycieska druzyna spotkania");
         lZwyciezca.setBounds(140,295,350,20);
         lZwyciezca.setForeground(Color.BLACK);
         lZwyciezca.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -358,7 +358,7 @@ class MenuPrzeciaganie extends JFrame implements ActionListener
         add(bDodaj);
         bDodaj.addActionListener(this);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,390,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);

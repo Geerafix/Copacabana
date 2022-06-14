@@ -1,6 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 
@@ -14,28 +13,28 @@ public class MenuSedziowie extends JFrame implements ActionListener
         setTitle("Menu Sedziowie");
         setLayout(null);
 
-        lSciezka = new JLabel("Zarządzanie Sędziami");
+        lSciezka = new JLabel("Zarzadzanie Sedziami");
         lSciezka.setBounds(161,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        bDodawanie = new JButton("Dodawanie sędziów");
+        bDodawanie = new JButton("Dodawanie sedziow");
         bDodawanie.setBounds(110,150,250,20);
         add(bDodawanie);
         bDodawanie.addActionListener(this);
 
-        bUsuwanie = new JButton("Usuwanie sędziów");
+        bUsuwanie = new JButton("Usuwanie sedziow");
         bUsuwanie.setBounds(110,185,250,20);
         add(bUsuwanie);
         bUsuwanie.addActionListener(this);
 
-        bPrzeglad = new JButton("Przegląd sędziów");
+        bPrzeglad = new JButton("Przeglad sedziow");
         bPrzeglad.setBounds(110,220,250,20);
         add(bPrzeglad);
         bPrzeglad.addActionListener(this);
 
-        bPowrot = new JButton("Powrót do Menu Głównego");
+        bPowrot = new JButton("Powrot do Menu Glownego");
         bPowrot.setBounds(110,255,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -86,16 +85,16 @@ class MenuDodawanieS extends JFrame implements ActionListener
     public MenuDodawanieS()
     {
         setSize(500,500);
-        setTitle("Dodawanie Sędziów");
+        setTitle("Dodawanie Sedziow");
         setLayout(null);
 
-        lSciezka = new JLabel("Dodawanie Sędziów");
+        lSciezka = new JLabel("Dodawanie Sedziow");
         lSciezka.setBounds(167,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lWpiszSedziego = new JLabel("Proszę wpisać nowego sędziego do listy sędziów");
+        lWpiszSedziego = new JLabel("Prosze wpisac nowego sedziego do listy sedziow");
         lWpiszSedziego.setBounds(80,150,350,20);
         lWpiszSedziego.setForeground(Color.BLACK);
         lWpiszSedziego.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -105,12 +104,12 @@ class MenuDodawanieS extends JFrame implements ActionListener
         tSedzia.setBounds(173,180,130,20);
         add(tSedzia);
 
-        bDodaj = new JButton("Dodaj sędziego");
+        bDodaj = new JButton("Dodaj sedziego");
         bDodaj.setBounds(110,220,250,20);
         add(bDodaj);
         bDodaj.addActionListener(this);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,255,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -121,10 +120,6 @@ class MenuDodawanieS extends JFrame implements ActionListener
         Object zrodlo = e.getSource();
         if(zrodlo==bDodaj)
         {
-            NowySedzia = tSedzia.getText();
-            ListaSedziow lse = new ListaSedziow();
-            try {lse.zPliku();} catch (ClassNotFoundException | IOException e1) {e1.printStackTrace();}
-            try {lse.dodajSedziego(NowySedzia);} catch (IOException e1) {e1.printStackTrace();}
             dispose();
             MenuSedziowie okno = new MenuSedziowie();
             okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -150,16 +145,16 @@ class MenuUsuwanieS extends JFrame implements ActionListener
     public MenuUsuwanieS()
     {
         setSize(500,500);
-        setTitle("Usuwanie Sędziów");
+        setTitle("Usuwanie Sedziow");
         setLayout(null);
 
-        lSciezka = new JLabel("Usuwanie Sędziów");
+        lSciezka = new JLabel("Usuwanie Sedziow");
         lSciezka.setBounds(170,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        lWpiszSedziego = new JLabel("Proszę wpisać sędziego do usunięcia z listy sędziów");
+        lWpiszSedziego = new JLabel("Prosze wpisac sedziego do usuniecia z listy sedziow");
         lWpiszSedziego.setBounds(80,150,350,20);
         lWpiszSedziego.setForeground(Color.BLACK);
         lWpiszSedziego.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -169,12 +164,12 @@ class MenuUsuwanieS extends JFrame implements ActionListener
         tSedzia.setBounds(173,180,130,20);
         add(tSedzia);
 
-        bUsun = new JButton("Usuń sędziego");
+        bUsun = new JButton("Usun sedziego");
         bUsun.setBounds(110,220,250,20);
         add(bUsun);
         bUsun.addActionListener(this);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,255,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
@@ -185,13 +180,6 @@ class MenuUsuwanieS extends JFrame implements ActionListener
         Object zrodlo = e.getSource();
         if(zrodlo==bUsun)
         {
-            NowySedzia = tSedzia.getText();
-            ListaSedziow lse = new ListaSedziow();
-            try {lse.zPliku();} catch (ClassNotFoundException | IOException e1) {e1.printStackTrace();}
-            try {lse.usunSedziego(NowySedzia);} catch (IOException e1) {e1.printStackTrace();} catch (BrakSedziego e1) {
-                e1.printStackTrace();
-            }
-            
             dispose();
             MenuSedziowie okno = new MenuSedziowie();
             okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -215,16 +203,16 @@ class MenuPrzegladS extends JFrame implements ActionListener
     public MenuPrzegladS()
     {
         setSize(500,500);
-        setTitle("Przegląd Sędziów");
+        setTitle("Przeglad Sedziow");
         setLayout(null);
 
-        lSciezka = new JLabel("Przegląd Sędziów");
+        lSciezka = new JLabel("Przeglad Sedziow");
         lSciezka.setBounds(172,30,400,200);
         lSciezka.setForeground(Color.RED);
         lSciezka.setFont(new Font("SansSerif", Font.BOLD, 14));
         add(lSciezka);
 
-        bPowrot = new JButton("Powrót");
+        bPowrot = new JButton("Powrot");
         bPowrot.setBounds(110,255,250,20);
         add(bPowrot);
         bPowrot.addActionListener(this);
