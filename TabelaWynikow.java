@@ -38,11 +38,18 @@ public class TabelaWynikow implements Serializable
     //odczytanie spotkan z pliku
     public void zPliku() throws IOException, ClassNotFoundException
     {   
+        try 
+        {
         fileOut = new FileInputStream("listaSpotkan.dat");
         objectOut = new ObjectInputStream(fileOut);
         lista_spotkan = (ArrayList<Spotkanie>) objectOut.readObject();
         fileOut.close();
         objectOut.close();
+        }
+        catch (Exception e)
+        {
+        
+        }
     }
     //zapis listy spotkan do pliku jako obiektu
     public void doPliku() throws IOException

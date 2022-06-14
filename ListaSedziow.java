@@ -57,12 +57,19 @@ public class ListaSedziow implements Serializable
     }
     //odczyt druzyn z pliku
     public void zPliku() throws IOException, ClassNotFoundException
-    {   
-        fileOut = new FileInputStream("listaSedziow.dat");
-        objectOut = new ObjectInputStream(fileOut);
-        lista_sedziow = (ArrayList<Sedzia>) objectOut.readObject();
-        fileOut.close();
-        objectOut.close();
+    {   try
+        {
+            fileOut = new FileInputStream("listaSedziow.dat");
+            objectOut = new ObjectInputStream(fileOut);
+            lista_sedziow = (ArrayList<Sedzia>) objectOut.readObject();
+            fileOut.close();
+            objectOut.close();
+        }
+        catch (Exception e)
+        {
+            
+        }
+        
     }  
     //zapis listy druzyn do pliku jako obiektu
     public void doPliku() throws IOException
