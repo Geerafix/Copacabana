@@ -1,6 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
+import java.lang.Math;
 
 public class Polfinal {
     protected Druzyna[] tablicaDruzynPolfinaluSiatkowki = new Druzyna [4];
@@ -82,7 +82,7 @@ public class Polfinal {
     //symulacja rozgrywek w polfinale jako parametr przyjmujaca obiekt klasy ListaSedziow
     void Symuluj (ListaSedziow listaSedziow) throws IOException {
 
-        Random symulacja = new Random();
+        double symulacja = Math.random();
         int zwyciezca, symSedzia;
         Sedzia sedzia, sedziaPomocniczy1, sedziaPomocniczy2;
         Spotkanie spotkanie;
@@ -104,8 +104,8 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-            zwyciezca = symulacja.nextInt(2);
-            symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+            zwyciezca = (int)symulacja*2;
+            symSedzia = (int)symulacja*listaSedziow.size();
             sedzia = listaSedziow.getSedzia(symSedzia);
 
             if (zwyciezca == 0)
@@ -135,8 +135,8 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-                zwyciezca = symulacja.nextInt(2);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                zwyciezca = (int)symulacja*2;
+                symSedzia = (int)symulacja*listaSedziow.size();
                 sedzia = listaSedziow.getSedzia(symSedzia);
 
                 if (zwyciezca == 0)
@@ -169,12 +169,12 @@ public class Polfinal {
         {
             for(int j=i+1; j<4; j++)
             {
-              zwyciezca = symulacja.nextInt(2);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                zwyciezca = (int)symulacja*2;
+                symSedzia = (int)symulacja*listaSedziow.size();
                 sedzia = listaSedziow.getSedzia(symSedzia);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = (int)symulacja*listaSedziow.size();
                 sedziaPomocniczy1 = listaSedziow.getSedzia(symSedzia);
-                symSedzia = symulacja.nextInt(listaSedziow.size()+1);
+                symSedzia = (int)symulacja*listaSedziow.size();
                 sedziaPomocniczy2 = listaSedziow.getSedzia(symSedzia);
 
 
