@@ -19,7 +19,7 @@ public class Polfinal {
         Druzyna pobranaDruzyna;
 
         int wynikDruzyny;
-        int wyniki[] = new int[] {0,0,0,0};
+        int wyniki[] = new int[] {-1, -1, -1, -1};
 
         for (int i=0; i!=listaDruzyn.size(); i++)
         {
@@ -39,7 +39,7 @@ public class Polfinal {
 
         for(int i=0; i<4; i++)
         {
-            wyniki[i] = 0;
+            wyniki[i] = -1;
         }
 
         for (int i=0; i!=listaDruzyn.size(); i++)
@@ -59,7 +59,7 @@ public class Polfinal {
         }
         for(int i=0; i<4; i++)
         {
-            wyniki[i] = 0;
+            wyniki[i] = -1;
         }
 
         for (int i=0; i!=listaDruzyn.size(); i++)
@@ -111,20 +111,20 @@ public class Polfinal {
             if (zwyciezca == 0)
                 {
                     wynikiPolfinaluDwochOgni[i]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
-                     tablicaDruzynPolfinaluDwochOgni[j],
+                    spotkanie = new Spotkanie(this.tablicaDruzynPolfinaluDwochOgni[i],
+                     this.tablicaDruzynPolfinaluDwochOgni[j],
                      "dwa_ognie",
                       sedzia,
-                       tablicaDruzynPolfinaluDwochOgni[i].getDruzyna() );
+                       this.tablicaDruzynPolfinaluDwochOgni[i].getDruzyna() );
                 }
                 else 
                 {
                     wynikiPolfinaluDwochOgni[j]++;
-                    spotkanie = new Spotkanie(tablicaDruzynPolfinaluDwochOgni[i],
-                     tablicaDruzynPolfinaluDwochOgni[j],
+                    spotkanie = new Spotkanie(this.tablicaDruzynPolfinaluDwochOgni[i],
+                     this.tablicaDruzynPolfinaluDwochOgni[j],
                      "dwa_ognie",
                       sedzia,
-                       tablicaDruzynPolfinaluDwochOgni[j].getDruzyna() );
+                       this.tablicaDruzynPolfinaluDwochOgni[j].getDruzyna() );
                 }
 
             spotkaniaPolfinalu.dodajSpotkanie(spotkanie);
