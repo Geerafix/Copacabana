@@ -127,17 +127,29 @@ public class Menu
                 case "ball" :
                 {
                     System.out.print("Prosze wpisac pierwsza druzyne spotkania"+"\n> ");
-                    Druzyna dr1 = new Druzyna(input.next());
-                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");           
-                    Druzyna dr2 = new Druzyna(input.next());
+                    String dru1 = input.next();
+                    ldr.czyZawiera(dru1);
+                    Druzyna dr1 = new Druzyna(dru1);
+                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");
+                    String dru2 = input.next();
+                    ldr.czyZawiera(dru2);           
+                    Druzyna dr2 = new Druzyna(dru2);
                     System.out.print("Prosze wpisac glownego sedziego spotkania"+"\n> ");
-                    Sedzia sedzia = new Sedzia(input.next());
+                    String se1 = input.next();
+                    lse.czyZawiera(se1);
+                    Sedzia sedzia = new Sedzia(se1);
                     System.out.print("Prosze wpisac pierwszego sedziego pomocniczego spotkania"+"\n> ");
-                    Sedzia pom1 = new Sedzia(input.next());
+                    String se2 = input.next();
+                    lse.czyZawiera(se2);
+                    Sedzia pom1 = new Sedzia(se2);
                     System.out.print("Prosze wpisac drugiego sedziego pomocniczego spotkania"+"\n> ");
-                    Sedzia pom2 = new Sedzia(input.next());
+                    String se3 = input.next();
+                    lse.czyZawiera(se3);
+                    Sedzia pom2 = new Sedzia(se3);
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
-                    String zwyciezca = input.next();
+                    String win = input.next();
+                    ldr.czyZawiera(win);
+                    String zwyciezca = win;
                     Siatkowka spotkanie = new Siatkowka(dr1, dr2, sedzia, pom1, pom2, "Siatkowka", zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "siatkowka");
@@ -148,13 +160,21 @@ public class Menu
                 case "fire" :
                 {
                     System.out.print("Prosze wpisac pierwsza druzyne spotkania"+"\n> ");
-                    Druzyna dr1 = new Druzyna(input.next());           
-                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");      
-                    Druzyna dr2 = new Druzyna(input.next());
+                    String dru1 = input.next();
+                    ldr.czyZawiera(dru1);
+                    Druzyna dr1 = new Druzyna(dru1);
+                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");   
+                    String dru2 = input.next();
+                    ldr.czyZawiera(dru2);   
+                    Druzyna dr2 = new Druzyna(dru2);
                     System.out.print("Prosze wpisac glownego sedziego spotkania"+"\n> ");
-                    Sedzia sedzia = new Sedzia(input.next());
+                    String se1 = input.next();
+                    lse.czyZawiera(se1);
+                    Sedzia sedzia = new Sedzia(se1);
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
-                    String zwyciezca = input.next();
+                    String win = input.next();
+                    ldr.czyZawiera(win);
+                    String zwyciezca = win;
                     DwaOgnie spotkanie = new DwaOgnie(dr1, dr2, "Dwa ognie", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "dwaOgnie");
@@ -165,13 +185,21 @@ public class Menu
                 case "line" :
                 {
                     System.out.print("Prosze wpisac pierwsza druzyne spotkania"+"\n> ");
-                    Druzyna dr1 = new Druzyna(input.next()); 
-                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");                  
-                    Druzyna dr2 = new Druzyna(input.next());
+                    String dru1 = input.next();
+                    ldr.czyZawiera(dru1);
+                    Druzyna dr1 = new Druzyna(dru1);
+                    System.out.print("Prosze wpisac druga druzyne spotkania"+"\n> ");   
+                    String dru2 = input.next();
+                    ldr.czyZawiera(dru2);                
+                    Druzyna dr2 = new Druzyna(dru2);
                     System.out.print("Prosze wpisac glownego sedziego spotkania"+"\n> ");
-                    Sedzia sedzia = new Sedzia(input.next());
+                    String se1 = input.next();
+                    lse.czyZawiera(se1);
+                    Sedzia sedzia = new Sedzia(se1);
                     System.out.print("Prosze wpisac zwycieska druzyne spotkania"+"\n> ");
-                    String zwyciezca = input.next();
+                    String win = input.next();
+                    ldr.czyZawiera(win);
+                    String zwyciezca = win;
                     PrzeciaganieLiny spotkanie = new PrzeciaganieLiny(dr1, dr2, "Przeciaganie liny", sedzia, zwyciezca);
                     tabw.dodajSpotkanie(spotkanie);
                     ldr.dodajWynik(zwyciezca, "przeciaganieLiny");
@@ -268,7 +296,7 @@ public class Menu
                     fin.Symuluj(lse);
                     System.out.println("Druzyny polfinalu przeciagania liny: ");
                     fin.tablicaDruzynFinaluPrzeciaganiaLiny();
-                    System.out.println("Druzyny polfinalu przeciagania liny: ");
+                    System.out.println("Druzyny finalu przeciagania liny: ");
                     plfin.tablicaDruzynPolfinaluPrzeciaganiaLiny();
                     break;
                 }
