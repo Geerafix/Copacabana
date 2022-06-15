@@ -26,9 +26,11 @@ public class Menu
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print("~~Plazowe Rozgrywki Kopakabana~~"
-                +"\n\nDostepne opcje:"+"\n'teams' - Zarzadzanie Druzynami\n"
-                +"'refs' - Zarzadzanie Sedziami\n"
+                +"\n\nDostepne opcje:"
+                +"\n'teams' - Zarzadzanie druzynami\n"
+                +"'refs' - Zarzadzanie sedziami\n"
                 +"'matches' - Organizacja spotkan\n"
+                +"'sim' - Symulacja polfinalu i finalu dla aktualnego stanu listy druzyn\n"
                 +"'menu' - Graficzny Interfejs Uzytkownika (prototyp)\n"
                 +"'end' - Wyjscie\n"
                 +"> ");
@@ -66,7 +68,6 @@ public class Menu
                 System.out.print("\n'ball' - Tworzenie nowego meczu siatkowki"
                 +"\n'fire' - Tworzenie nowego meczu dwoch ogni"
                 +"\n'line' - Tworzenie nowego meczu przeciagania liny"
-                +"\n'sim' - Przeprowadzanie symulacji polfinalu i finalu dla aktualnego stanu listy druzyn"
                 +"\n'delmatches' - Usuwanie spotkania o podanym indeksie"
                 +"\n'back' - Powrot do wszystkich opcji"
                 +"\n> ");
@@ -74,6 +75,18 @@ public class Menu
             if(i==5)
             {
                 System.out.print("> ");
+            }
+            if(i==6)
+            {
+                System.out.print("--Symulacja finalow--"+"\nPo wybraniu odpowiedniej opcji, system przenalizuje dotychczasowe wyniki druzyn "
+                +"\nw danej konkurencji i wybierze cztery druzyny z najwieksza punktacja, ktore przejda do polfinalu,"
+                +"\ngdzie zostana wylonione dwie, ktore przejda do finalu."
+                +"\n\n'simball' - Symulacja finalow siatkowki"
+                +"\n'simfire' - Symulacja finalow dwoch ogni"
+                +"\n'simline' - Symulacja finalow przeciagania liny"
+                +"\n'back' - Powrot do wszystkich opcji");
+                System.out.print("\n> ");
+                i=5;
             }
             switch(input.next())
             {
@@ -97,6 +110,13 @@ public class Menu
                 case "matches" :
                 {
                     i=4;
+                    break;
+                }
+                case "sim" :
+                {
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    i=6;
                     break;
                 }
                 case "back" :
@@ -222,27 +242,27 @@ public class Menu
                     ldr.doPliku();
                     break;
                 }
-                case "q" :
+                case "simball" :
                 {
                     i=5;
                     fin.Symuluj(lse);
-                    System.out.println("Druzyny finalu siatkowki: ");
-                    fin.tablicaDruzynFinaluSiatkowki();
                     System.out.println("Druzyny polfinalu siatkowki: ");
                     plfin.tablicaDruzynPolfinaluSiatkowki();
+                    System.out.println("Druzyny finalu siatkowki: ");
+                    fin.tablicaDruzynFinaluSiatkowki();
                     break;
                 }
-                case "w" :
+                case "simfire" :
                 {
                     i=5;
                     fin.Symuluj(lse);
-                    System.out.println("Druzyny finalu dwoch ogni: ");
-                    fin.tablicaDruzynFinaluDwochOgni();
                     System.out.println("Druzyny polfinalu dwoch ogni: ");
                     plfin.tablicaDruzynPolfinaluDwochOgni();
+                    System.out.println("Druzyny finalu dwoch ogni: ");
+                    fin.tablicaDruzynFinaluDwochOgni();
                     break;
                 }
-                case "e" :
+                case "simline" :
                 {
                     i=5;
                     fin.Symuluj(lse);
