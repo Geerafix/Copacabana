@@ -13,7 +13,6 @@ public class Menu
 
         ldr.zPliku();
         Final fin = new Final(ldr);
-        Polfinal plfin = new Polfinal(ldr);
         lse.zPliku();
         tabw.zPliku();
         ldr.pomoc();
@@ -275,7 +274,7 @@ public class Menu
                     i=5;
                     fin.Symuluj(lse);
                     System.out.println("Druzyny polfinalu siatkowki: ");
-                    plfin.tablicaDruzynPolfinaluSiatkowki();
+                    fin.tablicaDruzynPolfinaluSiatkowki();
                     System.out.println("Druzyny finalu siatkowki: ");
                     fin.tablicaDruzynFinaluSiatkowki();
                     break;
@@ -285,7 +284,7 @@ public class Menu
                     i=5;
                     fin.Symuluj(lse);
                     System.out.println("Druzyny polfinalu dwoch ogni: ");
-                    plfin.tablicaDruzynPolfinaluDwochOgni();
+                    fin.tablicaDruzynPolfinaluDwochOgni();
                     System.out.println("Druzyny finalu dwoch ogni: ");
                     fin.tablicaDruzynFinaluDwochOgni();
                     break;
@@ -295,9 +294,9 @@ public class Menu
                     i=5;
                     fin.Symuluj(lse);
                     System.out.println("Druzyny polfinalu przeciagania liny: ");
-                    fin.tablicaDruzynFinaluPrzeciaganiaLiny();
+                    fin.tablicaDruzynPolfinaluPrzeciaganiaLiny();
                     System.out.println("Druzyny finalu przeciagania liny: ");
-                    plfin.tablicaDruzynPolfinaluPrzeciaganiaLiny();
+                    fin.tablicaDruzynFinaluPrzeciaganiaLiny();
                     break;
                 }
                 case "end" :
